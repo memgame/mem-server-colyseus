@@ -1,0 +1,36 @@
+{
+  "name": "mem-server-colyseus",
+  "version": "1.0.0",
+  "description": "mem game server",
+  "main": "dist/server/bundle.js",
+  "scripts": {
+    "start": "npm run bundle && node dist/server/bundle.js",
+    "dev": "nodemon",
+    "startBundle": "node dist/server/bundle.js",
+    "bundle": "node fuse.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/memgame/mem-server-colyseus.git"
+  },
+  "keywords": [
+    "game",
+    "server",
+    "colyseus"
+  ],
+  "author": "BroProducts",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/memgame/mem-server-colyseus/issues"
+  },
+  "homepage": "https://github.com/memgame/mem-server-colyseus#readme",
+  "dependencies": {
+    "colyseus": "^0.9.26",
+    "express": "^4.16.4",
+    "fuse-box": "^3.6.0",
+    "nodemon": "^1.18.9",
+    "ts-node": "^8.0.2",
+    "typescript": "^3.2.4"
+  }
+}

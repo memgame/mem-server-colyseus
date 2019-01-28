@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es6",
+        "lib": [
+            "es2016"
+        ],
+        "experimentalDecorators": true,
+        "noImplicitAny": false,
+        "sourceMap": false
+    }
+}
