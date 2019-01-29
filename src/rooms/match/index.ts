@@ -23,7 +23,7 @@ export class Match extends Room {
         console.log(options)
         const userData = { name: 'SomeUserName'}
         return userData ? userData : false;
-     }
+    }
 
     // When client successfully join the room
     onJoin (client: Client, options: any, auth: any) { 
