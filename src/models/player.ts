@@ -1,9 +1,14 @@
 import { Position } from './../models/position';
+import { nosync } from 'colyseus';
 
 export class Player {
     public id: string;
 
     public position: Position;
+    public moveSpeed: number;
+
+    @nosync
+    public moveTo: Position;
 
     public health: number;
     public energy: number;
@@ -18,8 +23,6 @@ export class Player {
 
     public armor: number;
     public magicResistance: number;
-
-    public moveSpeed: number;
 
     public lifestealPercent: number;
     public spellvampPercent: number;
