@@ -6,7 +6,7 @@ import { Server } from 'colyseus';
 import { Match } from "./rooms/match";
 
 const port = Number(process.env.PORT || 8080);
-const app = express();
+const app = express;
 
 // Create HTTP Server
 const httpServer = createServer(app);

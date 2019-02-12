@@ -1,0 +1,41 @@
+{
+    "mapName": "four",
+    "numberOfPlayers": 48,
+    "maxScore": 500,
+    "teams": [
+        {
+            "id": "1",
+            "color": "red",
+            "score": 0
+        },
+        {
+            "id": "2",
+            "color": "blue",
+            "score": 0
+        },
+        {
+            "id": "3",
+            "color": "yellow",
+            "score": "0"
+        },
+        {
+            "id": "4",
+            "color": "green",
+            "score": "0"
+        }
+    ],
+    "capturePoints": [
+        {
+            "id": "1",
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "isSpawn": false,
+            "radius": 9,
+            "team": null,
+            "takenTo": 0
+        }
+    ]
+}

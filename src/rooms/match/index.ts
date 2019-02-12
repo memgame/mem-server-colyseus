@@ -1,4 +1,5 @@
 import { Room, Client } from 'colyseus';
+import map from '../../maps/map1.json';
 import { State } from './state';
 
 export class Match extends Room {
