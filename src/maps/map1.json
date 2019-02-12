@@ -272,7 +272,7 @@
                 "y": 0,
                 "z": 125
             },
-            "isSpawn": false,
+            "isSpawn": true,
             "radius": 9,
             "team": null,
             "takenTo": 0
