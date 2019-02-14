@@ -4,6 +4,8 @@ import { nosync } from 'colyseus';
 export class Player {
     public id: string;
 
+    public name: string;
+
     public position: Position;
     public moveSpeed: number;
 
@@ -28,8 +30,8 @@ export class Player {
     public spellvampPercent: number;
 
     constructor(
-
+        id: string
     ) {
-
+        this.id = id
     }
 }

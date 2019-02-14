@@ -1,11 +1,14 @@
 import { Room, Client } from 'colyseus';
-import map from '../../maps/map1.json';
 import { State } from './state';
+import map from '../../maps/map1.json';
 
 export class Match extends Room {
 
     // When room is initialized
     onInit (options: any) {
+        this.setState(new State)
+        this.setPatchRate(1000 / 20);
+        this.setSimulationInterval(this.update.bind(this)); 
         console.log('new room')
     }
 
@@ -33,16 +36,25 @@ export class Match extends Room {
         console.log(client.id)
         console.log(options)
         console.log(auth)
+        this.state.addPlayer(client, {
+            name: auth.name
+        })
     }
 
     // When a client sends a message
     onMessage (client: Client, message: any) { }
 
     // When a client leaves the room
-    onLeave (client: Client, consented: boolean) { }
+    onLeave (client: Client, consented: boolean) {
+        this.state.removePlayer(client)
+    }
 
     // Cleanup callback, called after there are no more clients in the room. (see `autoDispose`)
     onDispose () {
         console.log('closed match room')
+    }
+
+    update () {
+        this.state.calculateState()
     }
 }
