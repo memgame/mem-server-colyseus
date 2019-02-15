@@ -29,8 +29,8 @@ export class State implements IStatePlayers, IStateCapturePoints {
         console.log('removed player')
     }
 
-    public calculateState() {
-        movePlayers(this)
+    public calculateState(deltaTime: number) {
+        movePlayers(this, deltaTime)
         calculateCapturePoints(this)
     }
 }

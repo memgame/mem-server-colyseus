@@ -55,6 +55,6 @@ export class Match extends Room {
     }
 
     update () {
-        this.state.calculateState()
+        this.state.calculateState(this.clock.deltaTime)
     }
 }
