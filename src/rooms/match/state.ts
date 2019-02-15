@@ -1,9 +1,11 @@
 import { EntityMap, Client } from 'colyseus'
 import { Player } from '../../models/player'
+import { IStatePlayers } from '../IStatePlayers'
 
-export class State {
+import { movePlayers } from '../../services/serviceMovePlayers'
 
-    public players: EntityMap<Player> = {}
+export class State implements IStatePlayers {
+    public players: EntityMap<Player> = {};
     
     constructor() {
         
@@ -24,5 +26,6 @@ export class State {
 
     public calculateState() {
         //TODO add move calculation
+        movePlayers(this)
     }
 }
