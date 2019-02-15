@@ -25,6 +25,7 @@ export function movePlayers (state: IStatePlayers, deltaTime: number) {
 
         var distance = Vector3.distance(playerPosition, playerPositionMoveTo)
         //TODO move player to moveTo position
+        //Vector3 displacement = (targetLocation - currentLocation).normalized * moveSpeed * Time.deltaTime
 
     }
 
