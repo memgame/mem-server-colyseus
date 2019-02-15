@@ -1,6 +1,6 @@
 import BigNumber from "bignumber.js"
 import { IStatePlayers } from "../rooms/IStatePlayers"
-import { Vector3 } from "ts-vector-math";
+import { Vector3 } from "ts-vector-math"
 
 export function movePlayers (state: IStatePlayers, deltaTime: number) {
     /*
@@ -22,6 +22,8 @@ export function movePlayers (state: IStatePlayers, deltaTime: number) {
             player.moveTo = null
             continue
         }
+
+        var distance = Vector3.distance(playerPosition, playerPositionMoveTo)
         //TODO move player to moveTo position
 
     }

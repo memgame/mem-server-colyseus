@@ -19,6 +19,7 @@ export class State implements IStatePlayers, IStateCapturePoints {
     public addPlayer (client: Client, options: any) {
         var player = new Player(client.id)
         player.name = options.name;
+        player.moveSpeed = 300;
         this.players[client.id] = player
         console.log(this.players)
         console.log('added player')
