@@ -1,10 +1,15 @@
 import { EntityMap, Client } from 'colyseus'
-import { Player } from '../../models/player'
 import { IStatePlayers } from '../IStatePlayers'
+import { IStateCapturePoints } from '../IStateCapturePoints';
 
 import { movePlayers } from '../../services/serviceMovePlayers'
+import { calculateCapturePoints } from '../../services/serviceCalculateCapturePoints'
 
-export class State implements IStatePlayers {
+import { Player } from '../../models/player'
+import { CapturePoint } from '../../models/capturePoint'
+
+export class State implements IStatePlayers, IStateCapturePoints {
+    public capturePoints: EntityMap<CapturePoint> = {};
     public players: EntityMap<Player> = {};
     
     constructor() {
@@ -25,7 +30,7 @@ export class State implements IStatePlayers {
     }
 
     public calculateState() {
-        //TODO add move calculation
         movePlayers(this)
+        calculateCapturePoints(this)
     }
 }
