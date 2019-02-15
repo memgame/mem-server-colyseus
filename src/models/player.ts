@@ -6,6 +6,8 @@ export class Player {
 
     public name: string;
 
+    public team: string;
+
     public position: Position;
     public moveSpeed: number;
 
