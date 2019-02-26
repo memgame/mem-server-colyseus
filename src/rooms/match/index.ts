@@ -2,7 +2,10 @@ import { Room, Client } from 'colyseus';
 import { State } from './state';
 import map from '../../maps/map1.json';
 
-export class Match extends Room {
+
+import { calculateTeamPoints } from '../../services/serviceCalculateTeamPoints'
+
+export class Match extends Room<State> {
 
     // When room is initialized
     onInit (options: any) {
@@ -10,6 +13,8 @@ export class Match extends Room {
         this.setPatchRate(1000 / 20);
         this.setSimulationInterval(() => this.update()); 
         console.log('new room')
+
+        this.clock.setInterval(() => calculateTeamPoints(this.state), 10000)
     }
 
     // Checks if a new client is allowed to join. (default: `return true`)

@@ -14,7 +14,7 @@ export class State implements IStatePlayers, IStateCapturePoints, IStateTeams {
     
     public capturePoints: EntityMap<CapturePoint> = {}
     public players: EntityMap<Player> = {}
-    public teams: EntityMap<Team>
+    public teams: EntityMap<Team> = {}
     
     constructor() {
         
