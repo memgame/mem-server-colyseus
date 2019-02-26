@@ -4,6 +4,9 @@ import map from '../../maps/map1.json';
 
 
 import { calculateTeamPoints } from '../../services/serviceCalculateTeamPoints'
+import { calculateCapturePoints } from '../../services/serviceCalculateCapturePoints'
+
+import { movePlayers } from '../../services/serviceMovePlayers'
 
 export class Match extends Room<State> {
 
@@ -14,6 +17,7 @@ export class Match extends Room<State> {
         this.setSimulationInterval(() => this.update()); 
         console.log('new room')
 
+        this.clock.setInterval(() => calculateCapturePoints(this.state), 5000)
         this.clock.setInterval(() => calculateTeamPoints(this.state), 10000)
     }
 
@@ -60,6 +64,6 @@ export class Match extends Room<State> {
     }
 
     update () {
-        this.state.calculateState(this.clock.deltaTime)
+        movePlayers(this.state, this.clock.deltaTime)
     }
 }

@@ -3,9 +3,6 @@ import { IStatePlayers } from '../IStatePlayers'
 import { IStateCapturePoints } from '../IStateCapturePoints'
 import { IStateTeams } from '../IStateTeams';
 
-import { movePlayers } from '../../services/serviceMovePlayers'
-import { calculateCapturePoints } from '../../services/serviceCalculateCapturePoints'
-
 import { Player } from '../../models/player'
 import { CapturePoint } from '../../models/capturePoint'
 import { Team } from '../../models/team';
@@ -32,10 +29,5 @@ export class State implements IStatePlayers, IStateCapturePoints, IStateTeams {
     public removePlayer (client: Client) {
         delete this.players[client.id]
         console.log('removed player')
-    }
-
-    public calculateState(deltaTime: number) {
-        movePlayers(this, deltaTime)
-        calculateCapturePoints(this)
     }
 }
