@@ -1,16 +1,20 @@
 import { EntityMap, Client } from 'colyseus'
 import { IStatePlayers } from '../IStatePlayers'
-import { IStateCapturePoints } from '../IStateCapturePoints';
+import { IStateCapturePoints } from '../IStateCapturePoints'
+import { IStateTeams } from '../IStateTeams';
 
 import { movePlayers } from '../../services/serviceMovePlayers'
 import { calculateCapturePoints } from '../../services/serviceCalculateCapturePoints'
 
 import { Player } from '../../models/player'
 import { CapturePoint } from '../../models/capturePoint'
+import { Team } from '../../models/team';
 
-export class State implements IStatePlayers, IStateCapturePoints {
-    public capturePoints: EntityMap<CapturePoint> = {};
-    public players: EntityMap<Player> = {};
+export class State implements IStatePlayers, IStateCapturePoints, IStateTeams {
+    
+    public capturePoints: EntityMap<CapturePoint> = {}
+    public players: EntityMap<Player> = {}
+    public teams: EntityMap<Team>
     
     constructor() {
         
