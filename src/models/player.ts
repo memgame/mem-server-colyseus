@@ -8,6 +8,8 @@ export class Player {
 
     public team: string;
 
+    public isAlive: boolean;
+
     public position: Position;
     public moveSpeed: number;
 
