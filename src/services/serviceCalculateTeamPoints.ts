@@ -11,6 +11,7 @@ export function calculateTeamPoints(state: IStateTeams & IStateCapturePoints) {
                 var team = state.teams[keyTeam]
                 if(capturePoint.team == team.id && capturePoint.scorePoints) {
                     team.score = team.score + capturePoint.scorePoints
+                    continue
                 }
             }
         }
