@@ -7,6 +7,7 @@ export class CapturePoint {
     public radius: number
     public team: string
     public takenTo: number
+    public scorePoints: number
 
     constructor (
         id: string
