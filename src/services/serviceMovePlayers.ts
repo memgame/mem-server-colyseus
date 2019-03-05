@@ -1,12 +1,9 @@
 import BigNumber from "bignumber.js"
 import { IStatePlayers } from "../rooms/IStatePlayers"
 import { Vector3 } from "ts-vector-math"
+import { lerp } from "../utility/lerp";
 
 export function movePlayers (state: IStatePlayers, deltaTime: number) {
-    /*
-    var x = new BigNumber(0.1).plus(0.2)
-    console.log(x.toNumber()) //0.3
-    */
     for (let key in state.players) {
         var player = state.players[key]
         if(player.moveTo == null) {
@@ -23,10 +20,21 @@ export function movePlayers (state: IStatePlayers, deltaTime: number) {
             continue
         }
 
-        var distance = Vector3.distance(playerPosition, playerPositionMoveTo)
-        //TODO move player to moveTo position
-        //Vector3 displacement = (targetLocation - currentLocation).normalized * moveSpeed * Time.deltaTime
 
+        var moveSpeedPerSec = new BigNumber(player.moveSpeed).dividedBy(60).toNumber()
+
+        var moveSpeed = new BigNumber(moveSpeedPerSec).dividedBy(1000).multipliedBy(deltaTime).toNumber()
+
+        var distance = Vector3.distance(playerPosition, playerPositionMoveTo)
+
+        var t = new BigNumber(moveSpeed).dividedBy(distance).toNumber()
+        //Clamp
+        t = Math.min(Math.max(0, t), 1)
+
+        player.position.x = lerp(playerPosition.x, playerPositionMoveTo.x, t)
+        player.position.z = lerp(playerPosition.z, playerPositionMoveTo.z, t)
+        console.log('destination new:', player.position)
+        
     }
 
 }
