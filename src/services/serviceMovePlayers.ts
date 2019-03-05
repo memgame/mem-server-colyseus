@@ -20,7 +20,6 @@ export function movePlayers (state: IStatePlayers, deltaTime: number) {
             continue
         }
 
-
         var moveSpeedPerSec = new BigNumber(player.moveSpeed).dividedBy(60).toNumber()
 
         var distanceToTravel = new BigNumber(moveSpeedPerSec).dividedBy(1000).multipliedBy(deltaTime).toNumber()
