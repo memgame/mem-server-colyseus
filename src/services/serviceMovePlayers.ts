@@ -23,11 +23,11 @@ export function movePlayers (state: IStatePlayers, deltaTime: number) {
 
         var moveSpeedPerSec = new BigNumber(player.moveSpeed).dividedBy(60).toNumber()
 
-        var moveSpeed = new BigNumber(moveSpeedPerSec).dividedBy(1000).multipliedBy(deltaTime).toNumber()
+        var distanceToTravel = new BigNumber(moveSpeedPerSec).dividedBy(1000).multipliedBy(deltaTime).toNumber()
 
         var distance = Vector3.distance(playerPosition, playerPositionMoveTo)
 
-        var t = new BigNumber(moveSpeed).dividedBy(distance).toNumber()
+        var t = new BigNumber(distanceToTravel).dividedBy(distance).toNumber()
         //Clamp
         t = Math.min(Math.max(0, t), 1)
 
