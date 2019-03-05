@@ -1,16 +1,13 @@
-import { Vector3 } from "ts-vector-math"
-
 import { IStatePlayers } from "../rooms/IStatePlayers";
 import { IStateCapturePoints } from "../rooms/IStateCapturePoints"
+import { distanceBetween } from "../utility/vector2";
 
 export function calculateCapturePoints (state: IStateCapturePoints & IStatePlayers ) {
     for (let keyPlayer in state.players) {
         var player = state.players[keyPlayer]
-        var playerPosition = new Vector3([player.position.x, player.position.y, player.position.z])
         for (let keyCapturePoint in state.capturePoints) {
             var capturePoint = state.capturePoints[keyCapturePoint]
-            var capturePointPosition = new Vector3([capturePoint.position.x, capturePoint.position.y, capturePoint.position.z])
-            var distanceToPlayer = Vector3.distance(playerPosition, capturePointPosition)
+            var distanceToPlayer = distanceBetween(player.position.x, player.position.z, capturePoint.position.x, capturePoint.position.z)
             var isPlayerInCapturePoint = distanceToPlayer < capturePoint.radius
 
             if (isPlayerInCapturePoint) {
