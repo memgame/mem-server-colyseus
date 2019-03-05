@@ -1,6 +1,5 @@
 import BigNumber from "bignumber.js"
 import { IStatePlayers } from "../rooms/IStatePlayers"
-import { Vector3 } from "ts-vector-math"
 import { lerp } from "../utility/lerp";
 import { distanceBetween } from "../utility/vector2";
 
