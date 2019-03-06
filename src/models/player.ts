@@ -38,7 +38,6 @@ export class Player {
     ) {
         this.id = id
         this.position = new Position(0, 0, 0)
-        this.moveTo = new Position(10,0,0)
         this.moveSpeed = 300
     }
 }

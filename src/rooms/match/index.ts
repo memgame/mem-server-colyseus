@@ -7,6 +7,8 @@ import { calculateTeamPoints } from '../../services/serviceCalculateTeamPoints'
 import { calculateCapturePoints } from '../../services/serviceCalculateCapturePoints'
 
 import { movePlayers } from '../../services/serviceMovePlayers'
+import { MOVE_PLAYER_TO } from './actionType';
+import { Position } from '../../models/position';
 
 export class Match extends Room<State> {
 
@@ -51,7 +53,13 @@ export class Match extends Room<State> {
     }
 
     // When a client sends a message
-    onMessage (client: Client, message: any) { }
+    onMessage (client: Client, message: any) {
+        console.log(client.sessionId)
+        console.log(message)
+        if(message.ACTION_TYPE == MOVE_PLAYER_TO) {
+            this.state.players[client.sessionId].moveTo = new Position(message.payload.x, 0, message.payload.z)
+        }
+    }
 
     // When a client leaves the room
     onLeave (client: Client, consented: boolean) {
