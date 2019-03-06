@@ -19,15 +19,15 @@ export class State implements IStatePlayers, IStateCapturePoints, IStateTeams {
     }
 
     public addPlayer (client: Client, options: any) {
-        var player = new Player(client.id)
+        var player = new Player(client.sessionId)
         player.name = options.name;
-        this.players[client.id] = player
+        this.players[client.sessionId] = player
         console.log(this.players)
         console.log('added player')
     }
 
     public removePlayer (client: Client) {
-        delete this.players[client.id]
+        delete this.players[client.sessionId]
         console.log('removed player')
     }
 }
