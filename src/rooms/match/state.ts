@@ -1,8 +1,9 @@
-import { EntityMap, Client } from 'colyseus'
+import { Client } from 'colyseus'
 import { IStatePlayers } from '../IStatePlayers'
 import { IStateCapturePoints } from '../IStateCapturePoints'
 import { IStateTeams } from '../IStateTeams';
 
+import { EntityMap } from "../../types/entityMap"
 import { Player } from '../../models/player'
 import { CapturePoint } from '../../models/capturePoint'
 import { Team } from '../../models/team';

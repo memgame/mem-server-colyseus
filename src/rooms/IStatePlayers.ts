@@ -1,4 +1,5 @@
-import { EntityMap, Client } from "colyseus";
+import { Client } from "colyseus";
+import { EntityMap } from "../types/entityMap"
 import { Player } from "../models/player";
 
 export interface IStatePlayers {
