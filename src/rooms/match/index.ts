@@ -14,7 +14,7 @@ export class Match extends Room<State> {
 
     // When room is initialized
     onInit (options: any) {
-        this.setState(new State)
+        this.setState(new State(map))
         this.setPatchRate(1000 / 20);
         this.setSimulationInterval(() => this.update()); 
         console.log('new room')

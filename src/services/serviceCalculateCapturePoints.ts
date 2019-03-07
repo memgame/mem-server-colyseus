@@ -7,6 +7,7 @@ export function calculateCapturePoints (state: IStateCapturePoints & IStatePlaye
         var player = state.players[keyPlayer]
         for (let keyCapturePoint in state.capturePoints) {
             var capturePoint = state.capturePoints[keyCapturePoint]
+
             var distanceToPlayer = distanceBetween(player.position.x, player.position.z, capturePoint.position.x, capturePoint.position.z)
             var isPlayerInCapturePoint = distanceToPlayer < capturePoint.radius
 

@@ -16,12 +16,12 @@
         {
             "id": "3",
             "color": "yellow",
-            "score": "0"
+            "score": 0
         },
         {
             "id": "4",
             "color": "green",
-            "score": "0"
+            "score": 0
         }
     ],
     "capturePoints": [
