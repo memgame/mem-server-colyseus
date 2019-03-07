@@ -37,7 +37,7 @@ export class Player {
         id: string
     ) {
         this.id = id
-        this.position = new Position(0, 0, 0)
+        this.position = new Position(125, 0, 125)
         this.moveSpeed = 300
     }
 }
