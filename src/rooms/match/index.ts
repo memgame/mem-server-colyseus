@@ -57,7 +57,14 @@ export class Match extends Room<State> {
         console.log(client.sessionId)
         console.log(message)
         if(message.ACTION_TYPE == MOVE_PLAYER_TO) {
+            var player = this.state.players[client.sessionId]
             this.state.players[client.sessionId].moveTo = new Position(message.payload.x, 0, message.payload.z)
+
+            var angle = (Math.atan2(player.moveTo.x - player.position.x, player.moveTo.z - player.position.z) * (180/Math.PI))
+            if(angle < 0) {
+                angle = angle + 360
+            }
+            player.rotation = angle
         }
     }
 

@@ -11,6 +11,7 @@ export class Player {
     public isAlive: boolean;
 
     public position: Position;
+    public rotation: number;
     public moveSpeed: number;
 
     @nosync
@@ -38,6 +39,7 @@ export class Player {
     ) {
         this.id = id
         this.position = new Position(125, 0, 125)
+        this.rotation = 0
         this.moveSpeed = 300
     }
 }

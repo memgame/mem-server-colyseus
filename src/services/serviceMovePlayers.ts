@@ -31,7 +31,6 @@ export function movePlayers (state: IStatePlayers, deltaTime: number) {
 
         player.position.x = lerp(playerPosition.x, playerPositionMoveTo.x, t)
         player.position.z = lerp(playerPosition.z, playerPositionMoveTo.z, t)
-        
     }
 
 }
