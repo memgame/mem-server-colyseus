@@ -19,6 +19,7 @@ export function movePlayers (state: IStatePlayers, deltaTime: number) {
 
         if(isPlayerAtDestination) {
             player.moveTo = null
+            player.locomationAnimationSpeedPercent = 0
             continue
         }
         var moveSpeedPerSec = new BigNumber(player.moveSpeed).dividedBy(60).toNumber()
@@ -31,6 +32,7 @@ export function movePlayers (state: IStatePlayers, deltaTime: number) {
 
         player.position.x = lerp(playerPosition.x, playerPositionMoveTo.x, t)
         player.position.z = lerp(playerPosition.z, playerPositionMoveTo.z, t)
+        player.locomationAnimationSpeedPercent = 0.6
     }
 
 }

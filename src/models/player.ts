@@ -13,6 +13,7 @@ export class Player {
     public position: Position;
     public rotation: number;
     public moveSpeed: number;
+    public locomationAnimationSpeedPercent: number;
 
     @nosync
     public moveTo: Position;
