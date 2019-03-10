@@ -1,13 +1,10 @@
 {
   "name": "mem-server-colyseus",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "mem game server",
   "main": "dist/server/bundle.js",
   "scripts": {
-    "start": "npm run bundle && node dist/server/bundle.js",
-    "dev": "nodemon",
-    "startBundle": "node dist/server/bundle.js",
-    "bundle": "node fuse.js",
+    "start": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
