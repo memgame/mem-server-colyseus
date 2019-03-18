@@ -1,4 +1,5 @@
-import * as express from 'express';
+import express from "express";
+import health from "express-ping";
 import { createServer } from 'http';
 import { Server } from 'colyseus';
 
@@ -6,7 +7,7 @@ import { Server } from 'colyseus';
 import { Match } from "./rooms/match";
 
 const port = Number(process.env.PORT || 8080);
-const app = express;
+const app = express();
 
 // Create HTTP Server
 const httpServer = createServer(app);
@@ -22,6 +23,9 @@ const gameServer = new Server({
         next(true)
     }
 });
+
+// TODO make this configurable for prod
+app.use(health.ping())
 
 // Register Rooms
 gameServer.register("match", Match);
