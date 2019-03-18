@@ -5,10 +5,7 @@ import { Server } from 'colyseus';
 // Import Rooms
 import { Match } from "./rooms/match";
 
-const port = Number(process.env.PORT);
-
-console.log("the fucking port is: ", port);
-
+const port = Number(process.env.PORT || 8080);
 const app = express;
 
 // Create HTTP Server
