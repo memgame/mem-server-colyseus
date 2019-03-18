@@ -2,9 +2,10 @@
   "name": "mem-server-colyseus",
   "version": "1.0.2",
   "description": "mem game server",
-  "main": "dist/server/bundle.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "start": "tsc && node dist/index.js",
+    "tsc": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
