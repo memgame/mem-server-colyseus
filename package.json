@@ -4,7 +4,7 @@
   "description": "mem game server",
   "main": "dist/server/bundle.js",
   "scripts": {
-    "start": "npm run bundle && node dist/server/bundle.js",
+    "start": "nodemon",
     "dev": "nodemon",
     "startBundle": "node dist/server/bundle.js",
     "bundle": "node fuse.js",
