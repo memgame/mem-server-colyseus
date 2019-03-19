@@ -1,5 +1,5 @@
 # mem-server-colyseus
-[![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen)
+[![Build Status](https://travis-ci.org/memgame/mem-server-colyseus.svg?branch=master)](https://travis-ci.org/memgame/mem-server-colyseus)
 
 ## Table of Contents
 
@@ -16,3 +16,5 @@ npm i
 ```
 npm run dev
 ```
+
+[![forthebadge](https://forthebadge.com/images/badges/designed-in-ms-paint.svg)](https://forthebadge.com)
