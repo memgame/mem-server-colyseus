@@ -1,4 +1,9 @@
 deploy:
   provider: gae
-  keyfile: "YOUR SERVICE ACCOUNT JSON FILE"
-  project: "game-launcher-1439e"
+  keyfile: gce.json
+  project: game-launcher-1439e
+  skip_cleanup: true
+  on: production
+before_install:
+- openssl aes-256-cbc -K $encrypted_14007559d628_key -iv $encrypted_14007559d628_iv
+  -in gce.json.enc -out gce.json -d
