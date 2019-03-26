@@ -9,6 +9,7 @@ import { calculateCapturePoints } from '../../services/serviceCalculateCapturePo
 import { movePlayers } from '../../services/serviceMovePlayers'
 import * as actionTypes from './actionTypes';
 import { Position } from '../../models/position';
+import { StateRoot } from './state/index';
 
 export class Match extends Room<State> {
 
@@ -18,6 +19,8 @@ export class Match extends Room<State> {
         this.setPatchRate(1000 / 30);
         this.setSimulationInterval(() => this.update()); 
         console.log('new room')
+
+        var state = new StateRoot()
 
         this.clock.setInterval(() => calculateCapturePoints(this.state), 5000)
         this.clock.setInterval(() => calculateTeamPoints(this.state), 10000)
