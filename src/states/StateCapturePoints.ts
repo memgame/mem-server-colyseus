@@ -1,7 +1,8 @@
 import { CapturePoint } from "../models/capturePoint"
-import { Schema, MapSchema } from "@colyseus/schema";
+import { Schema, MapSchema, type } from "@colyseus/schema";
 
 export class StateCapturePoints extends Schema implements IStateCapturePoints {
+    @type({ map: CapturePoint })
     capturePoints: MapSchema<CapturePoint>;
     
     addCapturePoint(capturePoint: CapturePoint): void {
