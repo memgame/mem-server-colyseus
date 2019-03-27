@@ -9,21 +9,25 @@ import { calculateCapturePoints } from '../../services/serviceCalculateCapturePo
 import { movePlayers } from '../../services/serviceMovePlayers'
 import * as actionTypes from './actionTypes';
 import { Position } from '../../models/position';
-import { StateRoot } from './state/index';
+import { StateRoot } from '../../states/StateRoot';
 
-export class Match extends Room<State> {
+export class Match extends Room<StateRoot> {
+
+    constructor () {
+        super();
+        this.setState(new StateRoot());
+    }
 
     // When room is initialized
     onInit (options: any) {
-        this.setState(new State(map))
+        //this.setState(new State(map))
         this.setPatchRate(1000 / 30);
         this.setSimulationInterval(() => this.update()); 
+        console.log(this.state.toJSON())
         console.log('new room')
 
-        var state = new StateRoot()
-
-        this.clock.setInterval(() => calculateCapturePoints(this.state), 5000)
-        this.clock.setInterval(() => calculateTeamPoints(this.state), 10000)
+        //this.clock.setInterval(() => calculateCapturePoints(this.state), 5000)
+        //this.clock.setInterval(() => calculateTeamPoints(this.state), 10000)
     }
 
     // Checks if a new client is allowed to join. (default: `return true`)
@@ -50,15 +54,18 @@ export class Match extends Room<State> {
         console.log(client.id)
         console.log(options)
         console.log(auth)
+        /*
         this.state.addPlayer(client, {
             name: auth.name
         })
+        */
     }
 
     // When a client sends a message
     onMessage (client: Client, message: any) {
         console.log(client.sessionId)
         console.log(message)
+        /*
         if(message.ACTION_TYPE == actionTypes.MOVE_PLAYER_TO) {
             var player = this.state.players[client.sessionId]
             this.state.players[client.sessionId].moveTo = new Position(message.payload.x, 0, message.payload.z)
@@ -69,11 +76,12 @@ export class Match extends Room<State> {
             }
             player.rotation = angle
         }
+        */
     }
 
     // When a client leaves the room
     onLeave (client: Client, consented: boolean) {
-        this.state.removePlayer(client)
+        //this.state.removePlayer(client)
     }
 
     // Cleanup callback, called after there are no more clients in the room. (see `autoDispose`)
@@ -82,6 +90,6 @@ export class Match extends Room<State> {
     }
 
     update () {
-        movePlayers(this.state, this.clock.deltaTime)
+        //movePlayers(this.state, this.clock.deltaTime)
     }
 }

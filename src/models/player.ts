@@ -1,43 +1,64 @@
-import { Position } from './../models/position';
-import { nosync } from 'colyseus';
+import { Position } from './../models/position'
+import { Schema, type } from '@colyseus/schema'
 
-export class Player {
-    public id: string;
+export class Player extends Schema {
+    @type('string')
+    public id: string
 
-    public name: string;
+    @type('string')
+    public name: string
 
-    public team: string;
+    @type('string')
+    public team: string
 
-    public isAlive: boolean;
+    @type('boolean')
+    public isAlive: boolean
 
-    public position: Position;
-    public rotation: number;
-    public moveSpeed: number;
+    @type(Position)
+    public position: Position
+
+    @type('number')
+    public rotation: number
+    @type('number')
+    public moveSpeed: number
+    @type('number')
     public locomationAnimationSpeedPercent: number;
 
-    @nosync
-    public moveTo: Position;
+    public moveTo: Position
 
-    public health: number;
-    public energy: number;
+    @type('number')
+    public health: number
+    @type('number')
+    public energy: number
 
-    public attackDamage: number;
-    public attackSpeedPercent: number;
-    public critChancePercent: number;
-    public critBonusPercent: number;
+    @type('number')
+    public attackDamage: number
+    @type('number')
+    public attackSpeedPercent: number
+    @type('number')
+    public critChancePercent: number
+    @type('number')
+    public critBonusPercent: number
 
-    public abilityPower: number;
-    public cooldownReductionPercent: number;
+    @type('number')
+    public abilityPower: number
+    @type('number')
+    public cooldownReductionPercent: number
 
-    public armor: number;
-    public magicResistance: number;
+    @type('number')
+    public armor: number
+    @type('number')
+    public magicResistance: number
 
-    public lifestealPercent: number;
-    public spellvampPercent: number;
+    @type('number')
+    public lifestealPercent: number
+    @type('number')
+    public spellvampPercent: number
 
     constructor(
         id: string
     ) {
+        super();
         this.id = id
         this.position = new Position(125, 0, 125)
         this.rotation = 0
