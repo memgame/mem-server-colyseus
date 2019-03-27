@@ -3,7 +3,7 @@ import { Schema, MapSchema, type } from "@colyseus/schema";
 
 export class StateCapturePoints extends Schema implements IStateCapturePoints {
     @type({ map: CapturePoint })
-    capturePoints: MapSchema<CapturePoint>;
+    capturePoints: MapSchema<CapturePoint> = new MapSchema<CapturePoint>()
     
     addCapturePoint(capturePoint: CapturePoint): void {
         this.capturePoints[capturePoint.id] = capturePoint
