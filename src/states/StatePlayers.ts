@@ -8,9 +8,10 @@ export class StatePlayers extends Schema implements IStatePlayers {
     public addPlayer (player: Player): void {
         this.players[player.id] = player
         console.log('added player')
+        console.log(player.toJSON())
     }
 
-    public removePlayer (playerId: number): void {
+    public removePlayer (playerId: string): void {
         delete this.players[playerId]
         console.log('removed player')
     }
@@ -20,5 +21,5 @@ export interface IStatePlayers extends Schema {
     players: MapSchema<Player>
 
     addPlayer (player: Player): void
-    removePlayer (playerId: Number): void
+    removePlayer (playerId: string): void
 }

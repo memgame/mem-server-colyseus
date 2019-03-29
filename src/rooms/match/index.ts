@@ -10,6 +10,7 @@ import { movePlayers } from '../../services/serviceMovePlayers'
 import * as actionTypes from './actionTypes';
 import { Position } from '../../models/position';
 import { StateRoot } from '../../states/StateRoot';
+import { Player } from '../../models/player';
 
 export class Match extends Room<StateRoot> {
 
@@ -54,11 +55,12 @@ export class Match extends Room<StateRoot> {
         console.log(client.id)
         console.log(options)
         console.log(auth)
-        /*
-        this.state.addPlayer(client, {
-            name: auth.name
-        })
-        */
+        var player = new Player(client.sessionId)
+        player.name = auth.name;
+        //TODO check if get team id works
+        var keysTeams = Object.keys(this.state.stateTeams.teams)
+        player.team = keysTeams[Math.floor(Math.random() * keysTeams.length)]
+        this.state.statePlayers.addPlayer(player)
     }
 
     // When a client sends a message
@@ -81,7 +83,7 @@ export class Match extends Room<StateRoot> {
 
     // When a client leaves the room
     onLeave (client: Client, consented: boolean) {
-        //this.state.removePlayer(client)
+        this.state.statePlayers.removePlayer(client.sessionId)
     }
 
     // Cleanup callback, called after there are no more clients in the room. (see `autoDispose`)
