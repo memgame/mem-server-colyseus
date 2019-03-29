@@ -10,7 +10,7 @@ export class StateTeams extends Schema implements IStateTeams {
         console.log('added team')
     }
 
-    public removeTeam (teamId: number): void {
+    public removeTeam (teamId: string): void {
         delete this.teams[teamId]
         console.log('removed team')
     }
@@ -20,5 +20,5 @@ export interface IStateTeams extends Schema {
     teams: MapSchema<Team>
 
     addTeam(team: Team): void
-    removeTeam(teamId: number): void
+    removeTeam(teamId: string): void
 }

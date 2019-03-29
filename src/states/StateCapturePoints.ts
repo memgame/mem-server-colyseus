@@ -9,7 +9,7 @@ export class StateCapturePoints extends Schema implements IStateCapturePoints {
         this.capturePoints[capturePoint.id] = capturePoint
         console.log('added capture point')
     }
-    removeCapturePoint(capturePointId: number): void {
+    removeCapturePoint(capturePointId: string): void {
         delete this.capturePoints[capturePointId]
         console.log('removed capture point')
     }
@@ -19,5 +19,5 @@ export interface IStateCapturePoints extends Schema {
     capturePoints: MapSchema<CapturePoint>
 
     addCapturePoint (capturePoint: CapturePoint): void
-    removeCapturePoint (capturePointId: number): void
+    removeCapturePoint (capturePointId: string): void
 }

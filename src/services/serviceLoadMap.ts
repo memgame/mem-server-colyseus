@@ -4,13 +4,14 @@ import { IStateCapturePoints } from "../rooms/IStateCapturePoints";
 import { Team } from "../models/team";
 import { CapturePoint } from "../models/capturePoint";
 import { Position } from "../models/position";
+import { IStateRoot } from "../states/StateRoot";
 
-export function loadMap(state: IStatePlayers & IStateTeams & IStateCapturePoints, map: any) {
+export function loadMap(state: IStateRoot, map: any) {
     map.teams.forEach(obj => {
         var team = new Team(obj.id)
         team.color = obj.color
         team.score = obj.score
-        state.teams[team.id] = team
+        state.stateTeams.addTeam(team)
     });
     map.capturePoints.forEach(obj => {
         var capturePoint = new CapturePoint(obj.id)
@@ -20,6 +21,6 @@ export function loadMap(state: IStatePlayers & IStateTeams & IStateCapturePoints
         capturePoint.team = obj.team
         capturePoint.takenTo = obj.takenTo
         capturePoint.scorePoints = 1
-        state.capturePoints[capturePoint.id] = capturePoint
+        state.stateCapturePoints.addCapturePoint(capturePoint)
     })
 }

@@ -11,6 +11,7 @@ import * as actionTypes from './actionTypes';
 import { Position } from '../../models/position';
 import { StateRoot } from '../../states/StateRoot';
 import { Player } from '../../models/player';
+import { loadMap } from '../../services/serviceLoadMap';
 
 export class Match extends Room<StateRoot> {
 
@@ -22,6 +23,8 @@ export class Match extends Room<StateRoot> {
     // When room is initialized
     onInit (options: any) {
         //this.setState(new State(map))
+        
+        loadMap(this.state, map)
         this.setPatchRate(1000 / 30);
         this.setSimulationInterval(() => this.update()); 
         console.log(this.state.toJSON())
@@ -58,8 +61,10 @@ export class Match extends Room<StateRoot> {
         var player = new Player(client.sessionId)
         player.name = auth.name;
         //TODO check if get team id works
-        var keysTeams = Object.keys(this.state.stateTeams.teams)
-        player.team = keysTeams[Math.floor(Math.random() * keysTeams.length)]
+        console.log(this.state.stateTeams.teams)
+        //var keysTeams = Object.keys(this.state.stateTeams.teams)
+        //console.log(keysTeams)
+        //player.team = keysTeams[Math.floor(Math.random() * keysTeams.length)]
         this.state.statePlayers.addPlayer(player)
     }
 
