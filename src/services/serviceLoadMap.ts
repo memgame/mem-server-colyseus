@@ -23,4 +23,5 @@ export function loadMap(state: IStateRoot, map: any) {
         capturePoint.scorePoints = 1
         state.stateCapturePoints.addCapturePoint(capturePoint)
     })
+    console.log('loaded map')
 }

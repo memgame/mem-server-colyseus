@@ -226,7 +226,7 @@
             },
             "isSpawn": false,
             "radius": 9,
-            "team": null,
+            "team": "",
             "takenTo": 0
         },
         {
@@ -238,7 +238,7 @@
             },
             "isSpawn": false,
             "radius": 9,
-            "team": null,
+            "team": "",
             "takenTo": 0
         },
         {
@@ -250,7 +250,7 @@
             },
             "isSpawn": false,
             "radius": 9,
-            "team": null,
+            "team": "",
             "takenTo": 0
         },
         {
@@ -262,7 +262,7 @@
             },
             "isSpawn": false,
             "radius": 9,
-            "team": null,
+            "team": "",
             "takenTo": 0
         },
         {
@@ -274,7 +274,7 @@
             },
             "isSpawn": true,
             "radius": 9,
-            "team": null,
+            "team": "",
             "takenTo": 0
         }
     ]

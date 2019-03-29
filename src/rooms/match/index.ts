@@ -16,6 +16,7 @@ import { loadMap } from '../../services/serviceLoadMap';
 export class Match extends Room<StateRoot> {
 
     constructor () {
+        console.log('----- NEW ROOM -----')
         super();
         this.setState(new StateRoot());
     }
@@ -23,12 +24,9 @@ export class Match extends Room<StateRoot> {
     // When room is initialized
     onInit (options: any) {
         //this.setState(new State(map))
-        
         loadMap(this.state, map)
         this.setPatchRate(1000 / 30);
         this.setSimulationInterval(() => this.update()); 
-        console.log(this.state.toJSON())
-        console.log('new room')
 
         //this.clock.setInterval(() => calculateCapturePoints(this.state), 5000)
         //this.clock.setInterval(() => calculateTeamPoints(this.state), 10000)
@@ -60,11 +58,8 @@ export class Match extends Room<StateRoot> {
         console.log(auth)
         var player = new Player(client.sessionId)
         player.name = auth.name;
-        //TODO check if get team id works
-        console.log(this.state.stateTeams.teams)
-        //var keysTeams = Object.keys(this.state.stateTeams.teams)
-        //console.log(keysTeams)
-        //player.team = keysTeams[Math.floor(Math.random() * keysTeams.length)]
+        var keysTeams = Object.keys(this.state.stateTeams.teams)
+        player.team = keysTeams[Math.floor(Math.random() * keysTeams.length)]
         this.state.statePlayers.addPlayer(player)
     }
 
@@ -93,7 +88,7 @@ export class Match extends Room<StateRoot> {
 
     // Cleanup callback, called after there are no more clients in the room. (see `autoDispose`)
     onDispose () {
-        console.log('closed match room')
+        console.log('----- END ROOM -----')
     }
 
     update () {
