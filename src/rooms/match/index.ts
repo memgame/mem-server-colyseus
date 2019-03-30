@@ -8,7 +8,7 @@ import { calculateCapturePoints } from '../../services/serviceCalculateCapturePo
 import { movePlayers } from '../../services/serviceMovePlayers'
 import * as actionTypes from './actionTypes';
 import { Position } from '../../models/position';
-import { StateRoot } from '../../states/StateRoot';
+import { StateRoot, IStateRoot } from '../../states/StateRoot';
 import { Player } from '../../models/player';
 import { loadMap } from '../../services/serviceLoadMap';
 
@@ -66,15 +66,8 @@ export class Match extends Room<StateRoot> {
     onMessage (client: Client, message: any) {
         console.log(client.sessionId)
         console.log(message)
-        if(message.ACTION_TYPE == actionTypes.MOVE_PLAYER_TO) {
-            var player = this.state.statePlayers.players[client.sessionId]
-            this.state.statePlayers.players[client.sessionId].moveTo = new Position(message.payload.x, 0, message.payload.z)
-
-            var angle = (Math.atan2(player.moveTo.x - player.position.x, player.moveTo.z - player.position.z) * (180/Math.PI))
-            if(angle < 0) {
-                angle = angle + 360
-            }
-            player.rotation = angle
+        if (actions[message.ACTION_TYPE]) {
+            actions[message.ACTION_TYPE](this.state, client, message.payload)
         }
     }
 
@@ -92,3 +85,25 @@ export class Match extends Room<StateRoot> {
         movePlayers(this.state.statePlayers, this.clock.deltaTime)
     }
 }
+
+var actions: IActionTree<IStateRoot, Client> = {
+    [actionTypes.TEST]: (state, {sessionId}, payload) => {
+        console.log('hey from test action', sessionId, Date.now())
+    },
+    [actionTypes.MOVE_PLAYER_TO]: ({ statePlayers }, { sessionId }, payload) => {
+        var player = statePlayers.players[sessionId]
+        statePlayers.players[sessionId].moveTo = new Position(payload.x, 0, payload.z)
+
+        var angle = (Math.atan2(player.moveTo.x - player.position.x, player.moveTo.z - player.position.z) * (180/Math.PI))
+        if(angle < 0) {
+            angle = angle + 360
+        }
+        player.rotation = angle
+    }
+}
+
+interface IActionTree<S, R> {
+    [key: string]: Action<S, R>
+}
+
+type Action<S, R> = (state: S, client?: R, payload?: any) => any;

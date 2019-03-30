@@ -3,7 +3,7 @@ import { lerp } from "../utility/lerp";
 import { distanceBetween } from "../utility/vector2";
 import { IStatePlayers } from "../states/StatePlayers";
 
-export function movePlayers (state: IStatePlayers, deltaTime: number) {
+export function movePlayers (state: IStatePlayers, deltaTime: number): void {
     for (let key in state.players) {
         var player = state.players[key]
         if(player.moveTo == null) {

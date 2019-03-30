@@ -11,7 +11,7 @@
 //K
 //L
 //M
-export const MOVE_PLAYER_TO = 'MOVE_PLAYER_TO'
+export const MOVE_PLAYER_TO: string = 'MOVE_PLAYER_TO'
 //N
 //O
 //P
@@ -19,6 +19,7 @@ export const MOVE_PLAYER_TO = 'MOVE_PLAYER_TO'
 //R
 //S
 //T
+export const TEST: string = 'TEST'
 //U
 //V
 //W

@@ -2,7 +2,7 @@ import { distanceBetween } from "../utility/vector2";
 import { IStateCapturePoints } from "../states/StateCapturePoints";
 import { IStatePlayers } from "../states/StatePlayers";
 
-export function calculateCapturePoints (stateCapturePoints: IStateCapturePoints, statePlayers: IStatePlayers) {
+export function calculateCapturePoints (stateCapturePoints: IStateCapturePoints, statePlayers: IStatePlayers): void {
     for (let keyPlayer in statePlayers.players) {
         var player = statePlayers.players[keyPlayer]
         for (let keyCapturePoint in stateCapturePoints.capturePoints) {

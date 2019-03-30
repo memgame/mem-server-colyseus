@@ -1,7 +1,7 @@
 import { IStateTeams } from "../states/StateTeams";
 import { IStateCapturePoints } from "../states/StateCapturePoints";
 
-export function calculateTeamPoints(stateTeams: IStateTeams, stateCapturePoints: IStateCapturePoints) {
+export function calculateTeamPoints(stateTeams: IStateTeams, stateCapturePoints: IStateCapturePoints): void {
     for (let keyCapturePoint in stateCapturePoints.capturePoints) {
         var capturePoint = stateCapturePoints.capturePoints[keyCapturePoint]
         if (capturePoint.takenTo >= 50) {
