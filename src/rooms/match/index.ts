@@ -68,6 +68,8 @@ export class Match extends Room<StateRoot> {
         console.log(message)
         if (actions[message.ACTION_TYPE]) {
             actions[message.ACTION_TYPE](this.state, client, message.payload)
+        } else {
+            console.log('There is no action with this action type:', message.ACTION_TYPE)
         }
     }
 
