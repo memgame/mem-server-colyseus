@@ -12,7 +12,7 @@ import { StateRoot, IStateRoot } from '../../states/StateRoot';
 import { Player } from '../../models/player';
 import { loadMap } from '../../services/serviceLoadMap';
 
-export class Match extends Room<StateRoot> {
+export class Match extends Room<IStateRoot> {
 
     constructor () {
         console.log('----- NEW ROOM -----')
