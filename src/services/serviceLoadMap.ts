@@ -1,6 +1,3 @@
-import { IStatePlayers } from "../rooms/IStatePlayers";
-import { IStateTeams } from "../rooms/IStateTeams";
-import { IStateCapturePoints } from "../rooms/IStateCapturePoints";
 import { Team } from "../models/team";
 import { CapturePoint } from "../models/capturePoint";
 import { Position } from "../models/position";

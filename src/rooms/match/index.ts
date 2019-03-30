@@ -1,5 +1,4 @@
 import { Room, Client } from 'colyseus';
-import { State } from './state';
 import map from '../../maps/map1.json';
 
 
@@ -28,8 +27,8 @@ export class Match extends Room<StateRoot> {
         this.setPatchRate(1000 / 30);
         this.setSimulationInterval(() => this.update()); 
 
-        //this.clock.setInterval(() => calculateCapturePoints(this.state), 5000)
-        //this.clock.setInterval(() => calculateTeamPoints(this.state), 10000)
+        this.clock.setInterval(() => calculateCapturePoints(this.state.stateCapturePoints, this.state.statePlayers), 5000)
+        this.clock.setInterval(() => calculateTeamPoints(this.state.stateTeams, this.state.stateCapturePoints), 10000)
     }
 
     // Checks if a new client is allowed to join. (default: `return true`)
@@ -67,10 +66,9 @@ export class Match extends Room<StateRoot> {
     onMessage (client: Client, message: any) {
         console.log(client.sessionId)
         console.log(message)
-        /*
         if(message.ACTION_TYPE == actionTypes.MOVE_PLAYER_TO) {
-            var player = this.state.players[client.sessionId]
-            this.state.players[client.sessionId].moveTo = new Position(message.payload.x, 0, message.payload.z)
+            var player = this.state.statePlayers.players[client.sessionId]
+            this.state.statePlayers.players[client.sessionId].moveTo = new Position(message.payload.x, 0, message.payload.z)
 
             var angle = (Math.atan2(player.moveTo.x - player.position.x, player.moveTo.z - player.position.z) * (180/Math.PI))
             if(angle < 0) {
@@ -78,7 +76,6 @@ export class Match extends Room<StateRoot> {
             }
             player.rotation = angle
         }
-        */
     }
 
     // When a client leaves the room
@@ -92,6 +89,6 @@ export class Match extends Room<StateRoot> {
     }
 
     update () {
-        //movePlayers(this.state, this.clock.deltaTime)
+        movePlayers(this.state.statePlayers, this.clock.deltaTime)
     }
 }

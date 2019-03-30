@@ -1,12 +1,12 @@
-import { IStatePlayers } from "../rooms/IStatePlayers";
-import { IStateCapturePoints } from "../rooms/IStateCapturePoints"
 import { distanceBetween } from "../utility/vector2";
+import { IStateCapturePoints } from "../states/StateCapturePoints";
+import { IStatePlayers } from "../states/StatePlayers";
 
-export function calculateCapturePoints (state: IStateCapturePoints & IStatePlayers ) {
-    for (let keyPlayer in state.players) {
-        var player = state.players[keyPlayer]
-        for (let keyCapturePoint in state.capturePoints) {
-            var capturePoint = state.capturePoints[keyCapturePoint]
+export function calculateCapturePoints (stateCapturePoints: IStateCapturePoints, statePlayers: IStatePlayers) {
+    for (let keyPlayer in statePlayers.players) {
+        var player = statePlayers.players[keyPlayer]
+        for (let keyCapturePoint in stateCapturePoints.capturePoints) {
+            var capturePoint = stateCapturePoints.capturePoints[keyCapturePoint]
 
             var distanceToPlayer = distanceBetween(player.position.x, player.position.z, capturePoint.position.x, capturePoint.position.z)
             var isPlayerInCapturePoint = distanceToPlayer < capturePoint.radius
@@ -26,8 +26,8 @@ export function calculateCapturePoints (state: IStateCapturePoints & IStatePlaye
             }
         }
     }
-    for (let key in state.capturePoints) {
-        var capturePoint = state.capturePoints[key]
+    for (let key in stateCapturePoints.capturePoints) {
+        var capturePoint = stateCapturePoints.capturePoints[key]
         if(capturePoint.takenTo > 100) {
             capturePoint.takenTo = 100
         }

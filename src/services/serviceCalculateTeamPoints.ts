@@ -1,11 +1,11 @@
-import { IStateTeams } from "../rooms/IStateTeams";
-import { IStateCapturePoints } from "../rooms/IStateCapturePoints";
+import { IStateTeams } from "../states/StateTeams";
+import { IStateCapturePoints } from "../states/StateCapturePoints";
 
-export function calculateTeamPoints(state: IStateTeams & IStateCapturePoints) {
-    for (let keyCapturePoint in state.capturePoints) {
-        var capturePoint = state.capturePoints[keyCapturePoint]
+export function calculateTeamPoints(stateTeams: IStateTeams, stateCapturePoints: IStateCapturePoints) {
+    for (let keyCapturePoint in stateCapturePoints.capturePoints) {
+        var capturePoint = stateCapturePoints.capturePoints[keyCapturePoint]
         if (capturePoint.takenTo >= 50) {
-            var team = state.teams[capturePoint.team]
+            var team = stateTeams.teams[capturePoint.team]
             team.score = team.score + capturePoint.scorePoints
         }
     }

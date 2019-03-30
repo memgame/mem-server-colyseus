@@ -1,7 +1,7 @@
 import BigNumber from "bignumber.js"
-import { IStatePlayers } from "../rooms/IStatePlayers"
 import { lerp } from "../utility/lerp";
 import { distanceBetween } from "../utility/vector2";
+import { IStatePlayers } from "../states/StatePlayers";
 
 export function movePlayers (state: IStatePlayers, deltaTime: number) {
     for (let key in state.players) {
