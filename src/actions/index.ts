@@ -8,6 +8,7 @@ var actions: IActionTree<IStateRoot, Client> = {
         console.log('hey from', actionTypes.TEST, 'action', sessionId, Date.now())
     },
     [actionTypes.MOVE_PLAYER_TO]: ({ statePlayers }, { sessionId }, payload) => {
+        //TODO check payload
         var player = statePlayers.players[sessionId]
         statePlayers.players[sessionId].moveTo = new Position(payload.x, 0, payload.z)
 
@@ -16,6 +17,13 @@ var actions: IActionTree<IStateRoot, Client> = {
             angle = angle + 360
         }
         player.rotation = angle
+    },
+    [actionTypes.JOIN_TEAM]: ({statePlayers}, {sessionId}, payload) => {
+        //TODO check payload
+        //TODO check if team exist
+        //TODO check if team can be joined
+        var player = statePlayers.players[sessionId]
+        player.team = payload.team.toString()
     }
 }
 
