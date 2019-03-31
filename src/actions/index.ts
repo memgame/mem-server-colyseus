@@ -24,7 +24,7 @@ var actions: IActionTree<IStateRoot, Client> = {
         //TODO check if team can be joined
         var player = statePlayers.players[sessionId]
         player.team = payload.team.toString()
-    }
+    },
 }
 
 export default actions
