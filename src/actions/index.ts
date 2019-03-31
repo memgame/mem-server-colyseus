@@ -5,7 +5,7 @@ import { Position } from "../models/position";
 
 var actions: IActionTree<IStateRoot, Client> = {
     [actionTypes.TEST]: (state, {sessionId}, payload) => {
-        console.log('hey from test action', sessionId, Date.now())
+        console.log('hey from', actionTypes.TEST, 'action', sessionId, Date.now())
     },
     [actionTypes.MOVE_PLAYER_TO]: ({ statePlayers }, { sessionId }, payload) => {
         var player = statePlayers.players[sessionId]
