@@ -17,15 +17,17 @@ export class Player extends Schema {
     @type(Position)
     public position: Position
 
-    @type('number')
-    public rotation: number
+    public moveTo: Position
+
     @type('number')
     public moveSpeed: number
     @type('number')
+    public rotation: number
+    @type('number')
     public locomationAnimationSpeedPercent: number;
 
-    public moveTo: Position
-
+    @type('number')
+    public healthMax: number
     @type('number')
     public health: number
     @type('number')
@@ -60,8 +62,33 @@ export class Player extends Schema {
     ) {
         super();
         this.id = id
+        this.name = "no name"
+
+        this.isAlive = true
+
         this.position = new Position(125, 0, 125)
-        this.rotation = 0
+        this.moveTo = null
+
         this.moveSpeed = 300
+        this.rotation = 0
+        this.locomationAnimationSpeedPercent = 0
+
+        this.healthMax = 300
+        this.health = 200
+        this.energy = 30
+
+        this.attackDamage = 40
+        this.attackSpeedPercent = 1
+        this.critChancePercent = 0.05
+        this.critBonusPercent = 2
+
+        this.abilityPower = 40
+        this.cooldownReductionPercent = 0.05
+
+        this.armor = 10
+        this.magicResistance = 10
+
+        this.lifestealPercent = 0.05
+        this.spellvampPercent = 0.05
     }
 }
