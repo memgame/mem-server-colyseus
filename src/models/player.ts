@@ -36,6 +36,8 @@ export class Player extends Schema {
     @type('number')
     public attackDamage: number
     @type('number')
+    public attackSpeed: number
+    @type('number')
     public attackSpeedPercent: number
     @type('number')
     public critChancePercent: number
@@ -78,6 +80,7 @@ export class Player extends Schema {
         this.energy = 30
 
         this.attackDamage = 40
+        this.attackSpeed = 0.5
         this.attackSpeedPercent = 1
         this.critChancePercent = 0.05
         this.critBonusPercent = 2
