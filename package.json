@@ -7,7 +7,8 @@
     "start": "tsc && node dist/index.js",
     "tsc": "tsc",
     "dev": "nodemon",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generateClasses": "npx schema-codegen src/states/StateRoot.ts --output dist/models --cs"
   },
   "repository": {
     "type": "git",
@@ -26,7 +27,7 @@
   "homepage": "https://github.com/memgame/mem-server-colyseus#readme",
   "dependencies": {
     "bignumber.js": "^8.1.1",
-    "colyseus": "^0.10.1",
+    "colyseus": "^0.10.3",
     "express": "^4.16.4",
     "express-ping": "^1.4.0",
     "fuse-box": "^3.7.1",
