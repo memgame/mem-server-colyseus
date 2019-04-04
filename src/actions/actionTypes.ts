@@ -20,6 +20,8 @@ export const MOVE_PLAYER_TO: string = 'MOVE_PLAYER_TO'
 //R
 //S
 //T
+
+export const TARGET_PLAYER = 'TARGET_PLAYER'
 export const TEST: string = 'TEST'
 //U
 //V

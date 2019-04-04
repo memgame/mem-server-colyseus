@@ -1,7 +1,9 @@
 import { Position } from './../models/position'
 import { Schema, type } from '@colyseus/schema'
+import { ITargetable } from './ITargetable';
+import { IHittable } from './IHittable';
 
-export class Player extends Schema {
+export class Player extends Schema implements ITargetable, IHittable {
     @type('string')
     public id: string
 
@@ -16,6 +18,8 @@ export class Player extends Schema {
 
     @type(Position)
     public position: Position
+
+    public target: ITargetable
 
     public moveTo: Position
 
