@@ -8,7 +8,7 @@
 //H
 //I
 //J
-export const JOIN_TEAM = 'JOIN_TEAM'
+export const JOIN_TEAM: string = 'JOIN_TEAM'
 //K
 //L
 //M
@@ -21,7 +21,7 @@ export const MOVE_PLAYER_TO: string = 'MOVE_PLAYER_TO'
 //S
 //T
 
-export const TARGET_PLAYER = 'TARGET_PLAYER'
+export const TARGET_PLAYER: string = 'TARGET_PLAYER'
 export const TEST: string = 'TEST'
 //U
 //V
