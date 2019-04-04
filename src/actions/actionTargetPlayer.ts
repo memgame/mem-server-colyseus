@@ -16,7 +16,7 @@ export const actionTargetPlayer: Action<IStateRoot, Client> = ({statePlayers}, {
 
         if(!player) throw 'could not find player'
 
-        player.target = target
+        player.setTarget(target)
     } catch (err) {
         console.error('Error', TARGET_PLAYER, err)
     }

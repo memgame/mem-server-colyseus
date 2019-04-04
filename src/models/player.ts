@@ -98,4 +98,8 @@ export class Player extends Schema implements ITargetable, IHittable {
         this.lifestealPercent = 0.05
         this.spellvampPercent = 0.05
     }
+
+    public setTarget($target: ITargetable): void {
+        this.target = $target
+    }
 }
