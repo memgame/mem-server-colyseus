@@ -40,8 +40,8 @@ export function movePlayers (state: IStatePlayers, deltaTime: number): void {
         //Clamp
         t = Math.min(Math.max(0, t), 1)
 
-        player.position.x = lerp(player.position.x, player.position.x, t)
-        player.position.z = lerp(player.position.z, player.position.z, t)
+        player.position.x = lerp(player.position.x, player.moveTo.x, t)
+        player.position.z = lerp(player.position.z, player.moveTo.z, t)
         player.locomationAnimationSpeedPercent = 0.6
     }
 

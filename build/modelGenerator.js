@@ -20,7 +20,7 @@ files.forEach(filePath => {
     filesString = filesString + filePath + ' '
 })
 
-var command = `npx schema-codegen ${filesString} --output dist/models --csharp --namespace Mem.Models.Schema`
+var command = `npx schema-codegen ${filesString} --output dist/models --csharp --namespace Mem.Models`
 
 exec(command,
 function (error, stdout, stderr) {
