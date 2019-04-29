@@ -8,7 +8,7 @@
     "tsc": "tsc",
     "dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "generateClasses": "npx schema-codegen src/states/StateRoot.ts --output dist/models --cs"
+    "generateClasses": "node build/modelGenerator.js"
   },
   "repository": {
     "type": "git",
