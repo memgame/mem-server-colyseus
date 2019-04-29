@@ -2,11 +2,18 @@ import BigNumber from "bignumber.js"
 import { lerp } from "../utility/lerp";
 import { distanceBetween } from "../utility/vector2";
 import { IStatePlayers } from "../states/StatePlayers";
+import { Player } from "../models/player";
 
 export function movePlayers (state: IStatePlayers, deltaTime: number): void {
     for (let key in state.players) {
-        var player = state.players[key]
-        if(player.moveTo == null) {
+        var player: Player = state.players[key]
+
+        if (player.target) {
+            var target = player.target
+            player.setMoveTo(target.position.x, target.position.y, target.position.z)
+        }
+
+        if (player.moveTo == null) {
             continue
         }
 
@@ -17,7 +24,7 @@ export function movePlayers (state: IStatePlayers, deltaTime: number): void {
 
         var isPlayerAtDestination = distance == 0
 
-        if(isPlayerAtDestination) {
+        if (isPlayerAtDestination) {
             player.moveTo = null
             player.locomationAnimationSpeedPercent = 0
             continue

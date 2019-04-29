@@ -102,4 +102,13 @@ export class Player extends Schema implements ITargetable, IHittable {
     public setTarget(target: ITargetable): void {
         this.target = target
     }
+
+    public setMoveTo (x: number, y: number, z: number) {
+        this.moveTo = new Position(x, y, z)
+        var angle = (Math.atan2(this.moveTo.x - this.position.x, this.moveTo.z - this.position.z) * (180/Math.PI))
+        if (angle < 0) {
+            angle = angle + 360
+        }
+        this.rotation = angle
+    }
 }
