@@ -43,6 +43,7 @@ export class Player extends Schema implements ITargetable, IHittable {
     public attackDamage: number
     @type('number')
     public attackSpeed: number
+    public lastAutoAttack: number
     @type('number')
     public attackSpeedPercent: number
     @type('number')
@@ -75,6 +76,7 @@ export class Player extends Schema implements ITargetable, IHittable {
         this.isAlive = true
 
         this.position = new Position(125, 0, 125)
+        this.target = null
         this.moveTo = null
 
         this.moveSpeed = 300
@@ -88,6 +90,7 @@ export class Player extends Schema implements ITargetable, IHittable {
         this.attackRange = 10
         this.attackDamage = 40
         this.attackSpeed = 0.5
+        this.lastAutoAttack = 0
         this.attackSpeedPercent = 1
         this.critChancePercent = 0.05
         this.critBonusPercent = 2
