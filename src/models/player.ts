@@ -38,6 +38,8 @@ export class Player extends Schema implements ITargetable, IHittable {
     public energy: number
 
     @type('number')
+    public attackRange: number
+    @type('number')
     public attackDamage: number
     @type('number')
     public attackSpeed: number
@@ -83,6 +85,7 @@ export class Player extends Schema implements ITargetable, IHittable {
         this.health = 200
         this.energy = 30
 
+        this.attackRange = 10
         this.attackDamage = 40
         this.attackSpeed = 0.5
         this.attackSpeedPercent = 1

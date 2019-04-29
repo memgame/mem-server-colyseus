@@ -9,18 +9,21 @@ export function movePlayers (state: IStatePlayers, deltaTime: number): void {
         var player: Player = state.players[key]
 
         if (player.target) {
-            var target = player.target
-            player.setMoveTo(target.position.x, target.position.y, target.position.z)
+            var distanceToTarget = distanceBetween(player.position.x, player.position.z, player.target.position.x, player.target.position.z)
+            
+            //TODO check if in attack range
+            if (distanceToTarget > player.attackRange) {
+                player.setMoveTo(player.target.position.x, player.target.position.y, player.target.position.z)
+            } else {
+                player.moveTo = null
+            }
         }
 
         if (player.moveTo == null) {
             continue
         }
 
-        var playerPosition = player.position
-        var playerPositionMoveTo = player.moveTo
-
-        var distance = distanceBetween(playerPosition.x, playerPosition.z, playerPositionMoveTo.x, playerPositionMoveTo.z)
+        var distance = distanceBetween(player.position.x, player.position.z, player.moveTo.x, player.moveTo.z)
 
         var isPlayerAtDestination = distance == 0
 
@@ -37,8 +40,8 @@ export function movePlayers (state: IStatePlayers, deltaTime: number): void {
         //Clamp
         t = Math.min(Math.max(0, t), 1)
 
-        player.position.x = lerp(playerPosition.x, playerPositionMoveTo.x, t)
-        player.position.z = lerp(playerPosition.z, playerPositionMoveTo.z, t)
+        player.position.x = lerp(player.position.x, player.position.x, t)
+        player.position.z = lerp(player.position.z, player.position.z, t)
         player.locomationAnimationSpeedPercent = 0.6
     }
 
