@@ -89,7 +89,7 @@ export class Player extends Schema implements ITargetable, IHittable {
 
         this.attackRange = 10
         this.attackDamage = 40
-        this.attackSpeed = 0.5
+        this.attackSpeed = 500
         this.lastAutoAttack = 0
         this.attackSpeedPercent = 1
         this.critChancePercent = 0.05
