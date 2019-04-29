@@ -3,6 +3,14 @@ import { IStateRoot } from "../states/StateRoot";
 import { Client } from "colyseus";
 import { TARGET_PLAYER } from "./actionTypes";
 
+/*
+{
+    "ACTION_TYPE": "TARGET_PLAYER",
+    "payload": {
+        "palyerId": "PLAYER_ID"
+    }
+}
+*/
 export const actionTargetPlayer: Action<IStateRoot, Client> = ({statePlayers}, {sessionId}, payload) => {
     try {
         if(!payload) throw 'payload is not defined'

@@ -99,7 +99,7 @@ export class Player extends Schema implements ITargetable, IHittable {
         this.spellvampPercent = 0.05
     }
 
-    public setTarget($target: ITargetable): void {
-        this.target = $target
+    public setTarget(target: ITargetable): void {
+        this.target = target
     }
 }
