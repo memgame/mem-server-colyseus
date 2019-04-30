@@ -1,8 +1,9 @@
 import { distanceBetween } from "../utility/vector2";
 import { IStatePlayers } from "../states/StatePlayers";
 import { Player } from "../models/player";
+import { Room } from "colyseus";
 
-export function autoAttackPlayers (state: IStatePlayers, elapsedTime: number): void {
+export function autoAttackPlayers (state: IStatePlayers, elapsedTime: number, room: Room): void {
     for (let key in state.players) {
         var player: Player = state.players[key]
 
@@ -18,7 +19,13 @@ export function autoAttackPlayers (state: IStatePlayers, elapsedTime: number): v
         if (!isTargetInAutoAttackDistance) continue
 
         console.log('auto attack')
-        //TODO make auto attack
+
+        room.broadcast({
+            ACTION_TYPE: 'AUTO_ATTACK',
+            payload: {
+                playerId: player.id
+            }
+        })
 
         player.lastAutoAttack = elapsedTime
     }

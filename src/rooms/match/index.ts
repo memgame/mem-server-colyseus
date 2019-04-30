@@ -85,6 +85,6 @@ export class Match extends Room<IStateRoot> {
 
     update () {
         movePlayers(this.state.statePlayers, this.clock.deltaTime)
-        autoAttackPlayers(this.state.statePlayers, this.clock.elapsedTime)
+        autoAttackPlayers(this.state.statePlayers, this.clock.elapsedTime, this)
     }
 }
