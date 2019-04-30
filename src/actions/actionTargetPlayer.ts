@@ -11,7 +11,7 @@ import { TARGET_PLAYER } from "./actionTypes";
     }
 }
 */
-export const actionTargetPlayer: Action<IStateRoot, Client> = ({statePlayers}, {sessionId}, payload) => {
+export const actionTargetPlayer: Action<IStateRoot, Client> = (room, {statePlayers}, {sessionId}, payload) => {
     try {
         if(!payload) throw 'payload is not defined'
         if(!payload.playerId) throw 'payload.playerId is not defined'

@@ -16,11 +16,11 @@ export const MOVE_PLAYER_TO: string = 'MOVE_PLAYER_TO'
 //N
 //O
 //P
+export const PING: string = 'PING'
 //Q
 //R
 //S
 //T
-
 export const TARGET_PLAYER: string = 'TARGET_PLAYER'
 export const TEST: string = 'TEST'
 //U

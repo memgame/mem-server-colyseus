@@ -13,7 +13,7 @@ import { Player } from "../models/player";
     }
 }
 */
-export const actionMovePlayerTo: Action<IStateRoot, Client> =  ({ statePlayers }, { sessionId }, payload) => {
+export const actionMovePlayerTo: Action<IStateRoot, Client> =  (room, { statePlayers }, { sessionId }, payload) => {
     //TODO check payload
     var player: Player = statePlayers.players[sessionId]
     player.target = null

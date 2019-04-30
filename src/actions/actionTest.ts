@@ -9,6 +9,6 @@ import { Client } from "colyseus";
     "payload": {}
 }
 */
-export const actionTest: Action<IStateRoot, Client> = (state, {sessionId}, payload) => {
+export const actionTest: Action<IStateRoot, Client> = (room, state, {sessionId}, payload) => {
     console.log('hey from', actionTypes.TEST, 'action', sessionId, Date.now())
 }

@@ -10,7 +10,7 @@ import { Client } from "colyseus";
     }
 }
 */
-export const actionJoinTeam: Action<IStateRoot, Client> = ({statePlayers}, {sessionId}, payload) => {
+export const actionJoinTeam: Action<IStateRoot, Client> = (room, {statePlayers}, {sessionId}, payload) => {
     //TODO check payload
     //TODO check if team exist
     //TODO check if team can be joined
