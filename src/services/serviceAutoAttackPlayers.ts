@@ -12,11 +12,12 @@ export function autoAttackPlayers (state: IStatePlayers, elapsedTime: number): v
 
         if (!isAutoAttackReady) continue
 
-        var distanceToTarget = distanceBetween(player.position.x, player.position.z, player.target.position.x, player.target.position.y)
+        var distanceToTarget = distanceBetween(player.position.x, player.position.z, player.target.position.x, player.target.position.z)
         var isTargetInAutoAttackDistance = distanceToTarget <= player.attackRange
 
         if (!isTargetInAutoAttackDistance) continue
 
+        console.log('auto attack')
         //TODO make auto attack
 
         player.lastAutoAttack = elapsedTime

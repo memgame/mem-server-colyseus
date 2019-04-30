@@ -7,7 +7,7 @@ import { TARGET_PLAYER } from "./actionTypes";
 {
     "ACTION_TYPE": "TARGET_PLAYER",
     "payload": {
-        "palyerId": "PLAYER_ID"
+        "playerId": "PLAYER_ID"
     }
 }
 */
