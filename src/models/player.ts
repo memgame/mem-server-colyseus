@@ -2,8 +2,10 @@ import { Position } from './../models/position'
 import { Schema, type } from '@colyseus/schema'
 import { ITargetable } from './ITargetable';
 import { IHittable } from './IHittable';
+import { clamp } from '../utility/clamp';
+import { IHealable } from './IHealable';
 
-export class Player extends Schema implements ITargetable, IHittable {
+export class Player extends Schema implements ITargetable, IHittable, IHealable {
     @type('string')
     public id: string
 
@@ -19,7 +21,7 @@ export class Player extends Schema implements ITargetable, IHittable {
     @type(Position)
     public position: Position
 
-    public target: ITargetable
+    public target: ITargetable & IHittable
 
     public moveTo: Position
 
@@ -105,7 +107,7 @@ export class Player extends Schema implements ITargetable, IHittable {
         this.spellvampPercent = 0.05
     }
 
-    public setTarget(target: ITargetable): void {
+    public setTarget(target: ITargetable & IHittable): void {
         this.target = target
     }
 
@@ -116,5 +118,23 @@ export class Player extends Schema implements ITargetable, IHittable {
             angle = angle + 360
         }
         this.rotation = angle
+    }
+
+    public hit (physicalDamage: number, magicDamage: number, trueDamage: number) {
+        //TODO calculate with armor and resistance
+        console.log('is alive', this.isAlive)
+        console.log('health', this.health)
+        var totalDamage = physicalDamage + magicDamage + trueDamage
+        this.health = clamp(this.health - totalDamage, 0, this.healthMax)
+
+        this.isAlive = this.health > 0 ? true : false
+
+
+        console.log('is alive', this.isAlive)
+        console.log('health', this.health)
+    }
+
+    public heal (health: number) {
+        this.health = clamp(this.health + health, 0, this.healthMax)
     }
 }

@@ -18,6 +18,7 @@ export function autoAttackPlayers (state: IStatePlayers, elapsedTime: number, ro
 
         if (!isTargetInAutoAttackDistance) continue
 
+        console.log('--------------------')
         console.log('auto attack')
 
         room.broadcast({
@@ -26,7 +27,12 @@ export function autoAttackPlayers (state: IStatePlayers, elapsedTime: number, ro
                 playerId: player.id
             }
         })
+        
+        player.target.hit(player.attackDamage, 0, 0)
 
         player.lastAutoAttack = elapsedTime
+
+
+        console.log('--------------------')
     }
 }
