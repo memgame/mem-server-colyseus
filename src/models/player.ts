@@ -113,7 +113,11 @@ export class Player extends Schema implements ITargetable, IHittable, IHealable 
 
     public setMoveTo (x: number, y: number, z: number) {
         this.moveTo = new Position(x, y, z)
-        var angle = (Math.atan2(this.moveTo.x - this.position.x, this.moveTo.z - this.position.z) * (180/Math.PI))
+        this.setRotation(x, z)
+    }
+
+    public setRotation (x: number, z: number) {
+        var angle = (Math.atan2(x - this.position.x, z - this.position.z) * (180/Math.PI))
         if (angle < 0) {
             angle = angle + 360
         }

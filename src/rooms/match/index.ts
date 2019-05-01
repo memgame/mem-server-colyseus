@@ -11,6 +11,7 @@ import { StateRoot, IStateRoot } from '../../states/StateRoot';
 import { Player } from '../../models/player';
 import { loadMap } from '../../services/serviceLoadMap';
 import { autoAttackPlayers } from '../../services/serviceAutoAttackPlayers';
+import { rotatePlayersToTarget } from '../../services/serviceRotatePlayers';
 
 export class Match extends Room<IStateRoot> {
 
@@ -84,6 +85,7 @@ export class Match extends Room<IStateRoot> {
     }
 
     update () {
+        rotatePlayersToTarget(this.state.statePlayers)
         movePlayers(this.state.statePlayers, this.clock.deltaTime)
         autoAttackPlayers(this.state.statePlayers, this.clock.elapsedTime, this)
     }

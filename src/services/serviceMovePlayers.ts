@@ -11,7 +11,6 @@ export function movePlayers (state: IStatePlayers, deltaTime: number): void {
         if (player.target) {
             var distanceToTarget = distanceBetween(player.position.x, player.position.z, player.target.position.x, player.target.position.z)
             
-            //TODO check if in attack range
             if (distanceToTarget > player.attackRange) {
                 player.setMoveTo(player.target.position.x, player.target.position.y, player.target.position.z)
             } else {
@@ -20,6 +19,7 @@ export function movePlayers (state: IStatePlayers, deltaTime: number): void {
         }
 
         if (player.moveTo == null) {
+            player.locomationAnimationSpeedPercent = 0
             continue
         }
 
@@ -29,7 +29,6 @@ export function movePlayers (state: IStatePlayers, deltaTime: number): void {
 
         if (isPlayerAtDestination) {
             player.moveTo = null
-            player.locomationAnimationSpeedPercent = 0
             continue
         }
         var moveSpeedPerSec = new BigNumber(player.moveSpeed).dividedBy(60).toNumber()
