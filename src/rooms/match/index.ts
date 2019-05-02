@@ -14,6 +14,7 @@ import { autoAttackPlayers } from '../../services/serviceAutoAttackPlayers';
 import { rotatePlayersToTarget } from '../../services/serviceRotatePlayers';
 import { respawnPlayers } from '../../services/serviceRespawnPlayers';
 import { healthRegenerationPlayers } from '../../services/serviceHealthRegenerationPlayers';
+import { energyRegenerationPlayers } from '../../services/serviceEnergyRegenerationPlayers';
 
 export class Match extends Room<IStateRoot> {
 
@@ -34,6 +35,7 @@ export class Match extends Room<IStateRoot> {
         this.clock.setInterval(() => calculateTeamPoints(this.state.stateTeams, this.state.stateCapturePoints), 10000)
         this.clock.setInterval(() => respawnPlayers(this.state.statePlayers), 10000)
         this.clock.setInterval(() => healthRegenerationPlayers(this.state.statePlayers), 1000)
+        this.clock.setInterval(() => energyRegenerationPlayers(this.state.statePlayers), 1000)
     }
 
     // Checks if a new client is allowed to join. (default: `return true`)
