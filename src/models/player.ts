@@ -133,6 +133,10 @@ export class Player extends Schema implements ITargetable, IHittable, IHealable 
 
         this.isAlive = this.health > 0 ? true : false
 
+        if (!this.isAlive) {
+            this.moveTo = null
+            this.target = null
+        }
 
         console.log('is alive', this.isAlive)
         console.log('health', this.health)

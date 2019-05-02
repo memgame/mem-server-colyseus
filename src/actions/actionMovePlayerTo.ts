@@ -16,6 +16,8 @@ import { Player } from "../models/player";
 export const actionMovePlayerTo: Action<IStateRoot, Client> =  (room, { statePlayers }, { sessionId }, payload) => {
     //TODO check payload
     var player: Player = statePlayers.players[sessionId]
-    player.target = null
-    player.setMoveTo(payload.x, 0, payload.z)
+    if (player.isAlive) {
+        player.target = null
+        player.setMoveTo(payload.x, 0, payload.z)
+    }
 }

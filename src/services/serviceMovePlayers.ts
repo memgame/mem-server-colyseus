@@ -7,11 +7,8 @@ import { Player } from "../models/player";
 export function movePlayers (state: IStatePlayers, deltaTime: number): void {
     for (let key in state.players) {
         var player: Player = state.players[key]
-
-        if (!player.isAlive) {
-            player.moveTo = null
-            continue
-        }
+        
+        if (!player.isAlive) continue
 
         if (player.target) {
             var distanceToTarget = distanceBetween(player.position.x, player.position.z, player.target.position.x, player.target.position.z)
