@@ -30,6 +30,8 @@ export function autoAttackPlayers (state: IStatePlayers, elapsedTime: number, ro
         
         player.target.hit(player.attackDamage, 0, 0)
 
+        if (!player.target.isAlive) player.target = null
+
         player.lastAutoAttack = elapsedTime
 
 
