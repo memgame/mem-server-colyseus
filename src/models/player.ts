@@ -36,8 +36,11 @@ export class Player extends Schema implements ITargetable, IHittable, IHealable 
     public healthMax: number
     @type('number')
     public health: number
+    public healthRegeneration: number
     @type('number')
     public energy: number
+    @type('number')
+    public energyMax: number
 
     @type('number')
     public attackRange: number
@@ -87,7 +90,9 @@ export class Player extends Schema implements ITargetable, IHittable, IHealable 
 
         this.healthMax = 300
         this.health = 200
+        this.healthRegeneration = 3
         this.energy = 30
+        this.energyMax = 30
 
         this.attackRange = 10
         this.attackDamage = 40
@@ -143,6 +148,8 @@ export class Player extends Schema implements ITargetable, IHittable, IHealable 
     }
 
     public heal (health: number) {
+        if (!this.isAlive) return
+        
         this.health = clamp(this.health + health, 0, this.healthMax)
     }
 }
