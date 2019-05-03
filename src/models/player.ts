@@ -92,7 +92,7 @@ export class Player extends Schema implements ITargetable, IHittable, IHealable 
         this.healthMax = 300
         this.health = 200
         this.healthRegeneration = 3
-        this.energy = 30
+        this.energy = 0
         this.energyMax = 30
         this.energyRegeneration = 1
 
