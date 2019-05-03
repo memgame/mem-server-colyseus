@@ -9,6 +9,8 @@ export function autoAttackPlayers (state: IStatePlayers, elapsedTime: number, ro
 
         if (player.target == null) continue
 
+        if (!player.target.isAlive) continue
+
         var isAutoAttackReady = player.lastAutoAttack <= (elapsedTime - player.attackSpeed)
 
         if (!isAutoAttackReady) continue

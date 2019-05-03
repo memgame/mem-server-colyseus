@@ -115,10 +115,14 @@ export class Player extends Schema implements ITargetable, IHittable, IHealable 
     }
 
     public setTarget(target: ITargetable & IHittable): void {
+        if (!this.isAlive) return
+
         this.target = target
     }
 
     public setMoveTo (x: number, y: number, z: number) {
+        if (!this.isAlive) return
+
         this.moveTo = new Position(x, y, z)
         this.setRotation(x, z)
     }
@@ -135,6 +139,9 @@ export class Player extends Schema implements ITargetable, IHittable, IHealable 
         //TODO calculate with armor and resistance
         console.log('is alive', this.isAlive)
         console.log('health', this.health)
+
+        if (!this.isAlive) return
+
         var totalDamage = physicalDamage + magicDamage + trueDamage
         this.health = clamp(this.health - totalDamage, 0, this.healthMax)
 
@@ -156,10 +163,14 @@ export class Player extends Schema implements ITargetable, IHittable, IHealable 
     }
 
     public addEnergy (energy: number) {
+        if (!this.isAlive) return
+
         this.energy = clamp(this.energy + energy, 0, this.energyMax)
     }
 
     public removeEnergy (energy: number) {
+        if (!this.isAlive) return
+
         this.energy = clamp(this.energy - energy, 0, this.energyMax)
     }
 }
