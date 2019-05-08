@@ -15,6 +15,7 @@ import { rotatePlayersToTarget } from '../../services/serviceRotatePlayers';
 import { respawnPlayers } from '../../services/serviceRespawnPlayers';
 import { healthRegenerationPlayers } from '../../services/serviceHealthRegenerationPlayers';
 import { energyRegenerationPlayers } from '../../services/serviceEnergyRegenerationPlayers';
+import { targetCheckPlayer } from '../../services/serviceTargetCheckPlayers';
 
 export class Match extends Room<IStateRoot> {
 
@@ -91,6 +92,7 @@ export class Match extends Room<IStateRoot> {
     }
 
     update () {
+        targetCheckPlayer(this.state.statePlayers)
         rotatePlayersToTarget(this.state.statePlayers)
         movePlayers(this.state.statePlayers, this.clock.deltaTime)
         autoAttackPlayers(this.state.statePlayers, this.clock.elapsedTime, this)
