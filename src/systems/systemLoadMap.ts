@@ -3,7 +3,7 @@ import { CapturePoint } from "../models/capturePoint";
 import { Position } from "../models/position";
 import { IStateRoot } from "../states/StateRoot";
 
-export function loadMap(state: IStateRoot, map: any): void {
+export function systemLoadMap(state: IStateRoot, map: any): void {
     map.teams.forEach(obj => {
         var team = new Team(obj.id)
         team.color = obj.color

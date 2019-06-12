@@ -1,7 +1,7 @@
 import { IStatePlayers } from "../states/StatePlayers";
 import { Player } from "../models/player";
 
-export function rotatePlayersToTarget (state: IStatePlayers): void {
+export function systemRotatePlayersToTarget (state: IStatePlayers): void {
     for (let key in state.players) {
         var player: Player = state.players[key]
 

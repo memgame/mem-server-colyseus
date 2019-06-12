@@ -3,7 +3,7 @@ import { IStateCapturePoints } from "../states/StateCapturePoints";
 import { IStatePlayers } from "../states/StatePlayers";
 import { Player } from "../models/player";
 
-export function calculateCapturePoints (stateCapturePoints: IStateCapturePoints, statePlayers: IStatePlayers): void {
+export function systemCalculateCapturePoints (stateCapturePoints: IStateCapturePoints, statePlayers: IStatePlayers): void {
     for (let keyPlayer in statePlayers.players) {
         var player: Player = statePlayers.players[keyPlayer]
 

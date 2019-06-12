@@ -3,7 +3,7 @@ import { IStatePlayers } from "../states/StatePlayers";
 import { Player } from "../models/player";
 import { Room } from "colyseus";
 
-export function autoAttackPlayers (state: IStatePlayers, elapsedTime: number, room: Room): void {
+export function systemAutoAttackPlayers (state: IStatePlayers, elapsedTime: number, room: Room): void {
     for (let key in state.players) {
         var player: Player = state.players[key]
 

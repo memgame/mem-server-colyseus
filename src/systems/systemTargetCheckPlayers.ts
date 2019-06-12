@@ -1,7 +1,7 @@
 import { IStatePlayers } from "../states/StatePlayers";
 import { Player } from "../models/player";
 
-export function targetCheckPlayer (state: IStatePlayers) {
+export function systemTargetCheckPlayer (state: IStatePlayers) {
     for (let key in state.players) {
         var player: Player = state.players[key]
 

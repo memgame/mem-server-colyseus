@@ -2,7 +2,7 @@ import { IStatePlayers } from "../states/StatePlayers";
 import { Player } from "../models/player";
 import { Position } from "../models/position";
 
-export function respawnPlayers (state: IStatePlayers) {
+export function systemRespawnPlayers (state: IStatePlayers) {
     for(let key in state.players) {
         var player: Player = state.players[key]
 

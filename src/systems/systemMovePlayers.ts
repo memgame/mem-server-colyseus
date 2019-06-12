@@ -4,7 +4,7 @@ import { distanceBetween } from "../utility/vector2";
 import { IStatePlayers } from "../states/StatePlayers";
 import { Player } from "../models/player";
 
-export function movePlayers (state: IStatePlayers, deltaTime: number): void {
+export function systemMovePlayers (state: IStatePlayers, deltaTime: number): void {
     for (let key in state.players) {
         var player: Player = state.players[key]
         

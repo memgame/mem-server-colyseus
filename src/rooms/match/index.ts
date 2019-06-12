@@ -2,20 +2,20 @@ import { Room, Client } from 'colyseus';
 import map from '../../maps/map1.json';
 
 
-import { calculateTeamPoints } from '../../services/serviceCalculateTeamPoints'
-import { calculateCapturePoints } from '../../services/serviceCalculateCapturePoints'
+import { systemCalculateTeamPoints } from '../../systems/systemCalculateTeamPoints'
+import { systemCalculateCapturePoints } from '../../systems/systemCalculateCapturePoints'
 
-import { movePlayers } from '../../services/serviceMovePlayers'
+import { systemMovePlayers } from '../../systems/systemMovePlayers'
 import actions from '../../actions'
 import { StateRoot, IStateRoot } from '../../states/StateRoot';
 import { Player } from '../../models/player';
-import { loadMap } from '../../services/serviceLoadMap';
-import { autoAttackPlayers } from '../../services/serviceAutoAttackPlayers';
-import { rotatePlayersToTarget } from '../../services/serviceRotatePlayers';
-import { respawnPlayers } from '../../services/serviceRespawnPlayers';
-import { healthRegenerationPlayers } from '../../services/serviceHealthRegenerationPlayers';
-import { energyRegenerationPlayers } from '../../services/serviceEnergyRegenerationPlayers';
-import { targetCheckPlayer } from '../../services/serviceTargetCheckPlayers';
+import { systemLoadMap } from '../../systems/systemLoadMap';
+import { systemAutoAttackPlayers } from '../../systems/systemAutoAttackPlayers';
+import { systemRotatePlayersToTarget } from '../../systems/systemRotatePlayers';
+import { systemRespawnPlayers } from '../../systems/systemRespawnPlayers';
+import { systemHealthRegenerationPlayers } from '../../systems/systemHealthRegenerationPlayers';
+import { systemEnergyRegenerationPlayers } from '../../systems/systemEnergyRegenerationPlayers';
+import { systemTargetCheckPlayer } from '../../systems/systemTargetCheckPlayers';
 
 export class Match extends Room<IStateRoot> {
 
@@ -28,15 +28,15 @@ export class Match extends Room<IStateRoot> {
     // When room is initialized
     onInit (options: any) {
         //this.setState(new State(map))
-        loadMap(this.state, map)
+        systemLoadMap(this.state, map)
         this.setPatchRate(1000 / 30);
         this.setSimulationInterval(() => this.update()); 
 
-        this.clock.setInterval(() => calculateCapturePoints(this.state.stateCapturePoints, this.state.statePlayers), 5000)
-        this.clock.setInterval(() => calculateTeamPoints(this.state.stateTeams, this.state.stateCapturePoints), 10000)
-        this.clock.setInterval(() => respawnPlayers(this.state.statePlayers), 10000)
-        this.clock.setInterval(() => healthRegenerationPlayers(this.state.statePlayers), 1000)
-        this.clock.setInterval(() => energyRegenerationPlayers(this.state.statePlayers), 1000)
+        this.clock.setInterval(() => systemCalculateCapturePoints(this.state.stateCapturePoints, this.state.statePlayers), 5000)
+        this.clock.setInterval(() => systemCalculateTeamPoints(this.state.stateTeams, this.state.stateCapturePoints), 10000)
+        this.clock.setInterval(() => systemRespawnPlayers(this.state.statePlayers), 10000)
+        this.clock.setInterval(() => systemHealthRegenerationPlayers(this.state.statePlayers), 1000)
+        this.clock.setInterval(() => systemEnergyRegenerationPlayers(this.state.statePlayers), 1000)
     }
 
     // Checks if a new client is allowed to join. (default: `return true`)
@@ -92,9 +92,9 @@ export class Match extends Room<IStateRoot> {
     }
 
     update () {
-        targetCheckPlayer(this.state.statePlayers)
-        rotatePlayersToTarget(this.state.statePlayers)
-        movePlayers(this.state.statePlayers, this.clock.deltaTime)
-        autoAttackPlayers(this.state.statePlayers, this.clock.elapsedTime, this)
+        systemTargetCheckPlayer(this.state.statePlayers)
+        systemRotatePlayersToTarget(this.state.statePlayers)
+        systemMovePlayers(this.state.statePlayers, this.clock.deltaTime)
+        systemAutoAttackPlayers(this.state.statePlayers, this.clock.elapsedTime, this)
     }
 }
