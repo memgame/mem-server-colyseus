@@ -30,6 +30,6 @@ enum WeaponSlot {
 }
 
 enum CombatStyle {
-    Melee = 'melee',
+    Melee = 'Melee',
     Ranged = 'Ranged'
 }
