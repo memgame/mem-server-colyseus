@@ -1,10 +1,14 @@
 import { distanceBetween } from "../utility/vector2";
 import { IStateCapturePoints } from "../states/StateCapturePoints";
 import { IStatePlayers } from "../states/StatePlayers";
+import { Player } from "../models/player";
 
 export function calculateCapturePoints (stateCapturePoints: IStateCapturePoints, statePlayers: IStatePlayers): void {
     for (let keyPlayer in statePlayers.players) {
-        var player = statePlayers.players[keyPlayer]
+        var player: Player = statePlayers.players[keyPlayer]
+
+        if(!player.isAlive) continue
+
         for (let keyCapturePoint in stateCapturePoints.capturePoints) {
             var capturePoint = stateCapturePoints.capturePoints[keyCapturePoint]
 
