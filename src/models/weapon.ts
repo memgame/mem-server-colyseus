@@ -2,10 +2,10 @@ import { Schema, type } from "@colyseus/schema";
 
 export class Weapon extends Schema {
     @type('string')
-    public weaponType: WeaponType
+    public type: WeaponType
 
     @type('string')
-    public weaponSlot: WeaponSlot
+    public slot: WeaponSlot
 
     @type('string')
     public combatStyle: CombatStyle
@@ -14,7 +14,7 @@ export class Weapon extends Schema {
     public attackRange: number
 }
 
-enum WeaponType {
+export enum WeaponType {
     Axe = 'Axe',
     Sword = 'Sword',
     Spear = 'Spear',
@@ -23,13 +23,13 @@ enum WeaponType {
     Shield = 'Shield',
 }
 
-enum WeaponSlot {
+export enum WeaponSlot {
     OneHanded = 'OneHanded',
     TwoHanded = 'TwoHanded',
     OffHand = 'OffHand'
 }
 
-enum CombatStyle {
+export enum CombatStyle {
     Melee = 'Melee',
     Ranged = 'Ranged'
 }

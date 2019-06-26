@@ -4,6 +4,7 @@ import { ITargetable } from './ITargetable';
 import { IHittable } from './IHittable';
 import { clamp } from '../utility/clamp';
 import { IHealable } from './IHealable';
+import { Weapon, WeaponSlot } from './weapon';
 
 export class Player extends Schema implements ITargetable, IHittable, IHealable {
     @type('string')
@@ -72,6 +73,12 @@ export class Player extends Schema implements ITargetable, IHittable, IHealable 
     @type('number')
     public spellvampPercent: number
 
+    @type(Weapon)
+    public mainHand: Weapon
+
+    @type(Weapon)
+    public offHand: Weapon
+
     constructor(
         id: string
     ) {
@@ -112,6 +119,9 @@ export class Player extends Schema implements ITargetable, IHittable, IHealable 
 
         this.lifestealPercent = 0.05
         this.spellvampPercent = 0.05
+
+        this.mainHand = null
+        this.offHand = null
     }
 
     public setTarget(target: ITargetable & IHittable): void {
@@ -172,5 +182,23 @@ export class Player extends Schema implements ITargetable, IHittable, IHealable 
         if (!this.isAlive) return
 
         this.energy = clamp(this.energy - energy, 0, this.energyMax)
+    }
+
+    public equipWeapon (weapon: Weapon) {
+        switch(weapon.slot) {
+            case WeaponSlot.OffHand:
+                this.offHand = weapon;
+                if (!!this.mainHand && this.mainHand.slot == WeaponSlot.TwoHanded) {
+                    this.mainHand = null;
+                }
+                break;
+            case WeaponSlot.OneHanded:
+                this.mainHand = weapon;
+                break;
+            case WeaponSlot.TwoHanded:
+                this.mainHand = weapon;
+                this.offHand = null;
+                break;
+        }
     }
 }
