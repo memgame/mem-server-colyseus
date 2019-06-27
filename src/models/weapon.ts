@@ -2,6 +2,9 @@ import { Schema, type } from "@colyseus/schema";
 
 export class Weapon extends Schema {
     @type('string')
+    public id: string
+
+    @type('string')
     public type: WeaponType
 
     @type('string')
@@ -12,10 +15,12 @@ export class Weapon extends Schema {
 
     @type('number')
     public attackRange: number
+
+    @type('number')
+    public attackSpeed: number
 }
 
 export enum WeaponType {
-    Axe = 'Axe',
     Sword = 'Sword',
     Spear = 'Spear',
     Bow = 'Bow',
