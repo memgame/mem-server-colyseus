@@ -1,5 +1,5 @@
 import { Room, Client } from 'colyseus';
-import map from '../../maps/map1.json';
+import map from '../../data/maps/map1.json';
 
 
 import { systemCalculateTeamPoints } from '../../systems/systemCalculateTeamPoints'
