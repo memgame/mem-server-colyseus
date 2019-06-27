@@ -18,6 +18,13 @@ export class Weapon extends Schema {
 
     @type('number')
     public attackSpeed: number
+
+    constructor (
+        id: string
+    ) {
+        super()
+        this.id = id
+    }
 }
 
 export enum WeaponType {

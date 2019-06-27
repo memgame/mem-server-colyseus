@@ -1,5 +1,6 @@
 import { Room, Client } from 'colyseus';
 import map from '../../data/maps/map1.json';
+import weapons from '../../data/weapons.json'
 
 
 import { systemCalculateTeamPoints } from '../../systems/systemCalculateTeamPoints'
@@ -16,6 +17,7 @@ import { systemRespawnPlayers } from '../../systems/systemRespawnPlayers';
 import { systemHealthRegenerationPlayers } from '../../systems/systemHealthRegenerationPlayers';
 import { systemEnergyRegenerationPlayers } from '../../systems/systemEnergyRegenerationPlayers';
 import { systemTargetCheckPlayer } from '../../systems/systemTargetCheckPlayers';
+import { WeaponType, Weapon, WeaponSlot, CombatStyle } from '../../models/weapon';
 
 export class Match extends Room<IStateRoot> {
 
@@ -64,7 +66,19 @@ export class Match extends Room<IStateRoot> {
         console.log(options)
         console.log(auth)
         var player = new Player(client.sessionId)
-        player.name = auth.name;
+        var filteredWeapons = weapons.filter(obj => {
+            return obj.type == WeaponType.Bow
+        })
+        var weaponToEquip = filteredWeapons[Math.floor(Math.random() * filteredWeapons.length)]
+        var weapon = new Weapon(weaponToEquip.id)
+        weapon.slot = WeaponSlot[weaponToEquip.slot]
+        weapon.type = WeaponType[weaponToEquip.type]
+        weapon.combatStyle = CombatStyle[weaponToEquip.combatStyle]
+        weapon.attackRange = weaponToEquip.attackRange
+        weapon.attackSpeed = weaponToEquip.attackSpeed
+
+        player.equipWeapon(weapon)
+        player.name = auth.name
         var keysTeams = Object.keys(this.state.stateTeams.teams)
         player.team = keysTeams[Math.floor(Math.random() * keysTeams.length)]
         this.state.statePlayers.addPlayer(player)
