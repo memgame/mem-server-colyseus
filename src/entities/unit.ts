@@ -25,7 +25,7 @@ export class Unit extends BaseEntity implements IMoveable, ITargetable, IHittabl
 
     public moveTo: Position
     public target: ITargetable & IHittable
-    
+
     public setTarget(target: ITargetable & IHittable): void {
         if (!this.isAlive) return
 
@@ -48,13 +48,14 @@ export class Unit extends BaseEntity implements IMoveable, ITargetable, IHittabl
     }
 
     hit(physicalDamage: number, magicDamage: number, trueDamage: number) {
-        //TODO calculate with armor and resistance
         console.log('is alive', this.isAlive)
         console.log('health', this.health)
-
         if (!this.isAlive) return
 
-        var totalDamage = physicalDamage + magicDamage + trueDamage
+        const finalPhysicalDamage = physicalDamage * (100 / (100 + this.attributes.armor))
+        const finalMagicDamage = magicDamage * (100 / (100 + this.attributes.magicResistance))
+
+        const totalDamage = finalPhysicalDamage + finalMagicDamage + trueDamage
         this.health.current = clamp(this.health.current - totalDamage, 0, this.health.max)
 
         this.isAlive = this.health.current > 0 ? true : false
