@@ -18,7 +18,13 @@ import { systemHealthRegenerationPlayers } from '../../systems/systemHealthRegen
 import { systemEnergyRegenerationPlayers } from '../../systems/systemEnergyRegenerationPlayers';
 import { systemTargetCheckPlayer } from '../../systems/systemTargetCheckPlayers';
 import { WeaponType, Weapon, WeaponSlot, CombatStyle } from '../../models/weapon';
-import { systemMovementUnits } from '../../systems/systemMovement';
+import { systemUnitsMovement } from '../../systems/systemUnitsMovement';
+import { systemUnitsTargetCheck } from '../../systems/systemUnitsTargetCheck';
+import { systemUnitsRotateToTarget } from '../../systems/systemUnitsRotate';
+import { systemUnitsAutoAttack } from '../../systems/systemUnitsAutoAttack';
+import { systemUnitsRespawn } from '../../systems/systemUnitsRespawn';
+import { systemUnitsHealthRegeneration } from '../../systems/systemUnitsHealthRegeneration';
+import { systemUnitsEnergyRegeneration } from '../../systems/systemUnitsEnergyRegeneration';
 
 export class Match extends Room<IStateRoot> {
 
@@ -37,9 +43,14 @@ export class Match extends Room<IStateRoot> {
 
         this.clock.setInterval(() => systemCalculateCapturePoints(this.state.stateCapturePoints, this.state.statePlayers), 5000)
         this.clock.setInterval(() => systemCalculateTeamPoints(this.state.stateTeams, this.state.stateCapturePoints), 10000)
+        
         this.clock.setInterval(() => systemRespawnPlayers(this.state.statePlayers), 10000)
         this.clock.setInterval(() => systemHealthRegenerationPlayers(this.state.statePlayers), 1000)
         this.clock.setInterval(() => systemEnergyRegenerationPlayers(this.state.statePlayers), 1000)
+
+        this.clock.setInterval(() => systemUnitsRespawn(this.state.stateUnits.units), 10000)
+        this.clock.setInterval(() => systemUnitsHealthRegeneration(this.state.stateUnits.units), 1000)
+        this.clock.setInterval(() => systemUnitsEnergyRegeneration(this.state.stateUnits.units), 1000)
     }
 
     // Checks if a new client is allowed to join. (default: `return true`)
@@ -112,6 +123,9 @@ export class Match extends Room<IStateRoot> {
         systemMovePlayers(this.state.statePlayers, this.clock.deltaTime)
         systemAutoAttackPlayers(this.state.statePlayers, this.clock.elapsedTime, this)
         
-        systemMovementUnits(this.state.stateUnits.units, this.clock.deltaTime)
+        systemUnitsTargetCheck(this.state.stateUnits.units)
+        systemUnitsRotateToTarget(this.state.stateUnits.units)
+        systemUnitsMovement(this.state.stateUnits.units, this.clock.deltaTime)
+        systemUnitsAutoAttack(this.state.stateUnits.units, this.clock.elapsedTime, this)
     }
 }

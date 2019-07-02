@@ -6,7 +6,7 @@ import { clamp } from "../utility/clamp";
 import { Unit } from "../entities/unit";
 import { MapSchema } from "@colyseus/schema";
 
-export function systemMovementUnits(units: MapSchema<Unit>, deltaTime: number): void {
+export function systemUnitsMovement(units: MapSchema<Unit>, deltaTime: number): void {
     for (let key in units) {
         const unit: Unit = units[key]
         moveEntity(unit, deltaTime)

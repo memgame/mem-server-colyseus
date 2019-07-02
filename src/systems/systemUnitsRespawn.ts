@@ -1,0 +1,15 @@
+import { Position } from "../models/position";
+import { Unit } from "../entities/unit";
+import { MapSchema } from "@colyseus/schema";
+
+export function systemUnitsRespawn (units: MapSchema<Unit>) {
+    for(let key in units) {
+        var unit: Unit = units[key]
+
+        if (!unit.isAlive) {
+            unit.health.current = unit.health.max
+            unit.position = new Position(125, 0 , 125)
+            unit.isAlive = true
+        }
+    }
+}

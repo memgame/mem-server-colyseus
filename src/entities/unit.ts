@@ -25,6 +25,7 @@ export class Unit extends BaseEntity implements IMoveable, ITargetable, IHittabl
 
     public moveTo: Position
     public target: ITargetable & IHittable
+    public lastAutoAttack: number
 
     public setTarget(target: ITargetable & IHittable): void {
         if (!this.isAlive) return
