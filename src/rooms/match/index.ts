@@ -18,6 +18,7 @@ import { systemHealthRegenerationPlayers } from '../../systems/systemHealthRegen
 import { systemEnergyRegenerationPlayers } from '../../systems/systemEnergyRegenerationPlayers';
 import { systemTargetCheckPlayer } from '../../systems/systemTargetCheckPlayers';
 import { WeaponType, Weapon, WeaponSlot, CombatStyle } from '../../models/weapon';
+import { systemMovementUnits } from '../../systems/systemMovement';
 
 export class Match extends Room<IStateRoot> {
 
@@ -110,5 +111,7 @@ export class Match extends Room<IStateRoot> {
         systemRotatePlayersToTarget(this.state.statePlayers)
         systemMovePlayers(this.state.statePlayers, this.clock.deltaTime)
         systemAutoAttackPlayers(this.state.statePlayers, this.clock.elapsedTime, this)
+        
+        systemMovementUnits(this.state.stateUnits.units, this.clock.deltaTime)
     }
 }
