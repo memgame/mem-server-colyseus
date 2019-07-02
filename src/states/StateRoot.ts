@@ -3,8 +3,12 @@ import { IStateCounter, StateCounter } from './StateCounter'
 import { IStatePlayers, StatePlayers } from "./StatePlayers"
 import { IStateTeams, StateTeams } from "./StateTeams"
 import { IStateCapturePoints, StateCapturePoints } from "./StateCapturePoints"
+import { StateEntities, IStateEntities } from "./StateEntities";
 
 export class StateRoot extends Schema implements IStateRoot {
+
+    @type(StateEntities)
+    stateEntities: IStateEntities = new StateEntities()
 
     @type(StatePlayers)
     statePlayers: IStatePlayers = new StatePlayers()

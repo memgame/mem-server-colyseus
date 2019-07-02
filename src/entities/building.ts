@@ -1,11 +1,11 @@
-import { BaseEntitiy } from "./BaseEntitiy";
+import { BaseEntity } from "./BaseEntitiy";
 import { type } from "@colyseus/schema";
 import { Position } from "../models/position";
 
-export class Building extends BaseEntitiy {
+export class Building extends BaseEntity {
     @type(Position) public position: Position
     @type('number') public size: number
-    @type('string') buildingType: BuildingType;
+    @type('string') public buildingType: BuildingType;
 }
 
 export enum BuildingType {

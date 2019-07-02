@@ -1,10 +1,11 @@
-import { BaseEntitiy } from "./BaseEntitiy";
+import { BaseEntity } from "./BaseEntitiy";
 import { type } from "@colyseus/schema";
 import { Position } from "../models/position";
 import { Bar } from "../models/bar";
 
-export class Unit extends BaseEntitiy {
+export class Unit extends BaseEntity {
 
+    @type('string') public name: string
     @type(Position) public position: Position
     @type('number') public moveSpeed: number
     @type('number') public rotation: number

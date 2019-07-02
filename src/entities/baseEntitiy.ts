@@ -1,7 +1,7 @@
 import shortid from 'shortid';
 import { Schema, type } from "@colyseus/schema";
 
-export class BaseEntitiy extends Schema {
+export class BaseEntity extends Schema {
   @type('string') id: string;
   @type('string') type: EnitityType;
   
