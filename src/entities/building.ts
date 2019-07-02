@@ -11,4 +11,4 @@ export class Building extends BaseEntity {
 export enum BuildingType {
     Tree1 = 'Tree1',
     House1 = 'House1'
-  }
+}
