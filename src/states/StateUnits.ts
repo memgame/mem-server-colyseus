@@ -6,12 +6,12 @@ export class StateUnits extends Schema implements IStateUnits {
     
     public addUnit (unit: Unit): void {
         this.units[unit.id] = unit
-        console.log('added entity')
+        console.log('added unit')
     }
 
     public removeUnit (unitId: string): void {
         delete this.units[unitId]
-        console.log('removed entity')
+        console.log('removed unit')
     }
 }
 
