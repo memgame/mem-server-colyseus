@@ -4,8 +4,9 @@ import { distanceBetween } from "../utility/vector2";
 import { IMoveable } from "../interfaces/IMoveable";
 import { clamp } from "../utility/clamp";
 import { Unit } from "../entities/unit";
+import { MapSchema } from "@colyseus/schema";
 
-export function systemMovementUnits(units: any, deltaTime: number): void {
+export function systemMovementUnits(units: MapSchema<Unit>, deltaTime: number): void {
     for (let key in units) {
         const unit: Unit = units[key]
         moveEntity(unit, deltaTime)
