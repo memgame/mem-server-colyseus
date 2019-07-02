@@ -4,9 +4,10 @@ import { Position } from "../models/position";
 import { Bar } from "../models/bar";
 import { Attributes } from "../models/attributes";
 import { IMoveable } from "../interfaces/IMoveable";
+import { ITargetable } from "../interfaces/ITargetable";
+import { IHittable } from "../interfaces/IHittable";
 
-export class Unit extends BaseEntity implements IMoveable {
-
+export class Unit extends BaseEntity implements IMoveable, ITargetable, IHittable {
     @type('string') public name: string
     @type(Position) public position: Position
     @type('number') public moveSpeed: number
@@ -18,4 +19,9 @@ export class Unit extends BaseEntity implements IMoveable {
     @type(Attributes) public attributes: Attributes
 
     public moveTo: Position
+    public target: ITargetable & IHittable
+
+    hit(physicalDamage: number, magicDamage: number, trueDamage: number) {
+        throw new Error("Method not implemented.");
+    }
 }

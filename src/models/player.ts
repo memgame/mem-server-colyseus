@@ -1,9 +1,9 @@
 import { Position } from './../models/position'
 import { Schema, type } from '@colyseus/schema'
-import { ITargetable } from './ITargetable';
-import { IHittable } from './IHittable';
+import { ITargetable } from '../interfaces/ITargetable';
+import { IHittable } from '../interfaces/IHittable';
 import { clamp } from '../utility/clamp';
-import { IHealable } from './IHealable';
+import { IHealable } from '../interfaces/IHealable';
 import { Weapon, WeaponSlot } from './weapon';
 
 export class Player extends Schema implements ITargetable, IHittable, IHealable {
