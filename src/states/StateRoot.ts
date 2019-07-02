@@ -26,6 +26,7 @@ export class StateRoot extends Schema implements IStateRoot {
 
 
 export interface IStateRoot extends Schema {
+    stateEntities: IStateEntities
     stateCounter: IStateCounter
     statePlayers: IStatePlayers
     stateTeams: IStateTeams
