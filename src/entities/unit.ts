@@ -1,4 +1,4 @@
-import { BaseEntity } from "./BaseEntitiy";
+import { BaseEntity, EnitityType } from "./BaseEntitiy";
 import { type } from "@colyseus/schema";
 import { Position } from "../models/position";
 import { Bar } from "../models/bar";
@@ -109,6 +109,7 @@ export class Unit extends BaseEntity implements IMoveable, ITargetable, IHittabl
 
     static generate (): Unit {
         const unit = new Unit()
+        unit.type = EnitityType.Unit
         unit.name = 'Test123'
         unit.isAlive = true
         unit.position = new Position(125, 0, 125)
