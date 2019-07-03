@@ -25,6 +25,7 @@ import { systemUnitsAutoAttack } from '../../systems/systemUnitsAutoAttack';
 import { systemUnitsRespawn } from '../../systems/systemUnitsRespawn';
 import { systemUnitsHealthRegeneration } from '../../systems/systemUnitsHealthRegeneration';
 import { systemUnitsEnergyRegeneration } from '../../systems/systemUnitsEnergyRegeneration';
+import { Unit } from '../../entities/unit';
 
 export class Match extends Room<IStateRoot> {
 
@@ -94,6 +95,9 @@ export class Match extends Room<IStateRoot> {
         var keysTeams = Object.keys(this.state.stateTeams.teams)
         player.team = keysTeams[Math.floor(Math.random() * keysTeams.length)]
         this.state.statePlayers.addPlayer(player)
+
+        const unit = Unit.generate()
+        this.state.stateUnits.addUnit(unit)
     }
 
     // When a client sends a message

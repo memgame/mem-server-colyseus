@@ -105,4 +105,10 @@ export class Unit extends BaseEntity implements IMoveable, ITargetable, IHittabl
                 break;
         }
     }
+
+    static generate (): Unit {
+        const unit = new Unit()
+        unit.name = 'Test123'
+        return unit;
+    }
 }
