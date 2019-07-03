@@ -2,6 +2,7 @@ import { Action } from "./index";
 import { IStateRoot } from "../states/StateRoot";
 import { Client } from "colyseus";
 import { Player } from "../models/player";
+import { Unit } from "../entities/unit";
 
 /*
 {
@@ -17,7 +18,7 @@ export const actionMoveUnitTo: Action<IStateRoot, Client> =  (room, { statePlaye
     const player: Player = statePlayers.players[sessionId]
     if(!player) throw 'could not find player'
     if(!player.unitId) throw 'no unit id in player'
-    const unit = stateUnits.units[player.unitId]
+    const unit: Unit = stateUnits.units[player.unitId]
     if(!unit) throw 'could not find unit'
     if (unit.isAlive) {
         unit.target = null

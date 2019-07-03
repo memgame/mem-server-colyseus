@@ -2,26 +2,28 @@ import { distanceBetween } from "../utility/vector2";
 import { IStateCapturePoints } from "../states/StateCapturePoints";
 import { IStatePlayers } from "../states/StatePlayers";
 import { Player } from "../models/player";
+import { MapSchema } from "@colyseus/schema";
+import { Unit } from "../entities/unit";
 
-export function systemCalculateCapturePoints (stateCapturePoints: IStateCapturePoints, statePlayers: IStatePlayers): void {
+export function systemCalculateCapturePoints (stateCapturePoints: IStateCapturePoints, statePlayers: IStatePlayers, units: MapSchema<Unit>): void {
     for (let keyPlayer in statePlayers.players) {
-        var player: Player = statePlayers.players[keyPlayer]
-
-        if(!player.isAlive) continue
+        const player: Player = statePlayers.players[keyPlayer]
+        const unit: Unit = units[player.unitId]
+        if(!unit.isAlive) continue
 
         for (let keyCapturePoint in stateCapturePoints.capturePoints) {
             var capturePoint = stateCapturePoints.capturePoints[keyCapturePoint]
 
-            var distanceToPlayer = distanceBetween(player.position.x, player.position.z, capturePoint.position.x, capturePoint.position.z)
-            var isPlayerInCapturePoint = distanceToPlayer < capturePoint.radius
+            var distanceToUnit = distanceBetween(unit.position.x, unit.position.z, capturePoint.position.x, capturePoint.position.z)
+            var isUnitInCapturePoint = distanceToUnit < capturePoint.radius
 
-            if (isPlayerInCapturePoint) {
+            if (isUnitInCapturePoint) {
                 if (capturePoint.team == null) {
                     capturePoint.takenTo = capturePoint.takenTo + 1
-                    capturePoint.team = player.team
-                } else if (capturePoint.team == player.team) {
+                    capturePoint.team = unit.team
+                } else if (capturePoint.team == unit.team) {
                     capturePoint.takenTo = capturePoint.takenTo + 1
-                } else if (capturePoint.team != player.team) {
+                } else if (capturePoint.team != unit.team) {
                     capturePoint.takenTo = capturePoint.takenTo - 1
                     if (capturePoint.takenTo <= 0) {
                         capturePoint.team = null

@@ -35,7 +35,7 @@ export class Match extends Room<IStateRoot> {
         this.setPatchRate(1000 / 30);
         this.setSimulationInterval(() => this.update()); 
 
-        this.clock.setInterval(() => systemCalculateCapturePoints(this.state.stateCapturePoints, this.state.statePlayers), 5000)
+        this.clock.setInterval(() => systemCalculateCapturePoints(this.state.stateCapturePoints, this.state.statePlayers, this.state.stateUnits.units), 5000)
         this.clock.setInterval(() => systemCalculateTeamPoints(this.state.stateTeams, this.state.stateCapturePoints), 10000)
 
         this.clock.setInterval(() => systemUnitsRespawn(this.state.stateUnits.units), 10000)
