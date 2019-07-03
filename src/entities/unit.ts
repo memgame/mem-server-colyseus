@@ -6,16 +6,17 @@ import { Attributes } from "../models/attributes";
 import { IMoveable } from "../interfaces/IMoveable";
 import { ITargetable } from "../interfaces/ITargetable";
 import { IHittable } from "../interfaces/IHittable";
-import { Weapon, WeaponSlot } from "../models/weapon";
+import { Weapon, WeaponSlot, WeaponType, CombatStyle } from "../models/weapon";
 import { clamp } from "../utility/clamp";
 import { IHealable } from "../interfaces/IHealable";
+import weapons from '../data/weapons.json'
 
 export class Unit extends BaseEntity implements IMoveable, ITargetable, IHittable, IHealable {
     @type('string') public name: string
     @type(Position) public position: Position
     @type('number') public moveSpeed: number
     @type('number') public rotation: number
-    @type('number') public locomationAnimationSpeedPercent: number;
+    @type('number') public locomationAnimationSpeedPercent: number
     @type('boolean') public isAlive: boolean
     @type(Bar) public health: Bar
     @type(Bar) public energy: Bar
@@ -109,6 +110,44 @@ export class Unit extends BaseEntity implements IMoveable, ITargetable, IHittabl
     static generate (): Unit {
         const unit = new Unit()
         unit.name = 'Test123'
+        unit.isAlive = true
+        unit.position = new Position(125, 0, 125)
+        unit.target = null
+        unit.moveTo = null
+        unit.moveSpeed = 300
+        unit.rotation = 0
+        unit.locomationAnimationSpeedPercent = 0
+        unit.health = new Bar()
+        unit.health.max = 300
+        unit.health.current = 200
+        unit.health.regenerationSpeed = 3
+
+        unit.energy = new Bar()
+        unit.energy.max = 30
+        unit.energy.current = 0
+        unit.energy.regenerationSpeed = 1
+
+        unit.lastAutoAttack = 0
+
+        unit.attributes = new Attributes()
+        unit.attributes.attackDamage = 40
+        unit.attributes.attackSpeedPercent = 1
+        unit.attributes.abilityPower = 50
+        unit.attributes.armor = 10
+        unit.attributes.magicResistance = 10
+        const filteredWeapons = weapons.filter(obj => {
+            return obj.type == WeaponType.Bow
+        })
+        const weaponToEquip = filteredWeapons[Math.floor(Math.random() * filteredWeapons.length)]
+        const weapon = new Weapon(weaponToEquip.id)
+        weapon.slot = WeaponSlot[weaponToEquip.slot]
+        weapon.type = WeaponType[weaponToEquip.type]
+        weapon.combatStyle = CombatStyle[weaponToEquip.combatStyle]
+        weapon.attackRange = weaponToEquip.attackRange
+        weapon.attackSpeed = weaponToEquip.attackSpeed
+        unit.equipWeapon(weapon)
+        unit.setMoveTo(0, 0, 0)
+
         return unit;
     }
 }
