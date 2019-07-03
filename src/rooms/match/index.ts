@@ -1,7 +1,5 @@
 import { Room, Client } from 'colyseus';
 import map from '../../data/maps/map1.json';
-import weapons from '../../data/weapons.json'
-
 
 import { systemCalculateTeamPoints } from '../../systems/systemCalculateTeamPoints'
 import { systemCalculateCapturePoints } from '../../systems/systemCalculateCapturePoints'
@@ -10,7 +8,6 @@ import actions from '../../actions'
 import { StateRoot, IStateRoot } from '../../states/StateRoot';
 import { Player } from '../../models/player';
 import { systemLoadMap } from '../../systems/systemLoadMap';
-import { WeaponType, Weapon, WeaponSlot, CombatStyle } from '../../models/weapon';
 import { systemUnitsMovement } from '../../systems/systemUnitsMovement';
 import { systemUnitsTargetCheck } from '../../systems/systemUnitsTargetCheck';
 import { systemUnitsRotateToTarget } from '../../systems/systemUnitsRotate';

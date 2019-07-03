@@ -147,7 +147,6 @@ export class Unit extends BaseEntity implements IMoveable, ITargetable, IHittabl
         weapon.attackRange = weaponToEquip.attackRange
         weapon.attackSpeed = weaponToEquip.attackSpeed
         unit.equipWeapon(weapon)
-        unit.setMoveTo(0, 0, 0)
 
         return unit;
     }
