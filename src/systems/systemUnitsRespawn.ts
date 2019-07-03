@@ -3,7 +3,6 @@ import { Unit } from "../entities/unit";
 import { MapSchema } from "@colyseus/schema";
 
 export function systemUnitsRespawn (units: MapSchema<Unit>) {
-    console.log('system respawn')
     for(let key in units) {
         var unit: Unit = units[key]
 
