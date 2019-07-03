@@ -14,6 +14,7 @@ export const actionJoinTeam: Action<IStateRoot, Client> = (room, {statePlayers},
     //TODO check payload
     //TODO check if team exist
     //TODO check if team can be joined
+    //TODO change all relate entites from player to new team
     var player = statePlayers.players[sessionId]
     console.log(player.team)
     player.team = payload.teamId.toString()

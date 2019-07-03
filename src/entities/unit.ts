@@ -23,6 +23,7 @@ export class Unit extends BaseEntity implements IMoveable, ITargetable, IHittabl
     @type(Attributes) public attributes: Attributes
     @type(Weapon) public mainHand: Weapon
     @type(Weapon) public offHand: Weapon
+    @type('string') public team: string
 
     public moveTo: Position
     public target: ITargetable & IHittable
@@ -36,7 +37,6 @@ export class Unit extends BaseEntity implements IMoveable, ITargetable, IHittabl
 
     public setMoveTo (x: number, y: number, z: number) {
         if (!this.isAlive) return
-
         this.moveTo = new Position(x, y, z)
         this.setRotation(x, z)
     }
@@ -110,7 +110,7 @@ export class Unit extends BaseEntity implements IMoveable, ITargetable, IHittabl
     static generate (): Unit {
         const unit = new Unit()
         unit.type = EnitityType.Unit
-        unit.name = 'Test123'
+        unit.name = 'Unknown'
         unit.isAlive = true
         unit.position = new Position(125, 0, 125)
         unit.target = null

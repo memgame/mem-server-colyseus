@@ -12,7 +12,7 @@ export const JOIN_TEAM: string = 'JOIN_TEAM'
 //K
 //L
 //M
-export const MOVE_PLAYER_TO: string = 'MOVE_PLAYER_TO'
+export const MOVE_UNIT_TO: string = 'MOVE_UNIT_TO'
 //N
 //O
 //P
@@ -21,7 +21,7 @@ export const PING: string = 'PING'
 //R
 //S
 //T
-export const TARGET_PLAYER: string = 'TARGET_PLAYER'
+export const TARGET_UNIT: string = 'TARGET_UNIT'
 export const TEST: string = 'TEST'
 //U
 //V

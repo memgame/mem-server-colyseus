@@ -6,17 +6,10 @@ import weapons from '../../data/weapons.json'
 import { systemCalculateTeamPoints } from '../../systems/systemCalculateTeamPoints'
 import { systemCalculateCapturePoints } from '../../systems/systemCalculateCapturePoints'
 
-import { systemMovePlayers } from '../../systems/systemMovePlayers'
 import actions from '../../actions'
 import { StateRoot, IStateRoot } from '../../states/StateRoot';
 import { Player } from '../../models/player';
 import { systemLoadMap } from '../../systems/systemLoadMap';
-import { systemAutoAttackPlayers } from '../../systems/systemAutoAttackPlayers';
-import { systemRotatePlayersToTarget } from '../../systems/systemRotatePlayers';
-import { systemRespawnPlayers } from '../../systems/systemRespawnPlayers';
-import { systemHealthRegenerationPlayers } from '../../systems/systemHealthRegenerationPlayers';
-import { systemEnergyRegenerationPlayers } from '../../systems/systemEnergyRegenerationPlayers';
-import { systemTargetCheckPlayer } from '../../systems/systemTargetCheckPlayers';
 import { WeaponType, Weapon, WeaponSlot, CombatStyle } from '../../models/weapon';
 import { systemUnitsMovement } from '../../systems/systemUnitsMovement';
 import { systemUnitsTargetCheck } from '../../systems/systemUnitsTargetCheck';
@@ -44,10 +37,6 @@ export class Match extends Room<IStateRoot> {
 
         this.clock.setInterval(() => systemCalculateCapturePoints(this.state.stateCapturePoints, this.state.statePlayers), 5000)
         this.clock.setInterval(() => systemCalculateTeamPoints(this.state.stateTeams, this.state.stateCapturePoints), 10000)
-        
-        this.clock.setInterval(() => systemRespawnPlayers(this.state.statePlayers), 10000)
-        this.clock.setInterval(() => systemHealthRegenerationPlayers(this.state.statePlayers), 1000)
-        this.clock.setInterval(() => systemEnergyRegenerationPlayers(this.state.statePlayers), 1000)
 
         this.clock.setInterval(() => systemUnitsRespawn(this.state.stateUnits.units), 10000)
         this.clock.setInterval(() => systemUnitsHealthRegeneration(this.state.stateUnits.units), 1000)
@@ -78,26 +67,18 @@ export class Match extends Room<IStateRoot> {
         console.log(client.id)
         console.log(options)
         console.log(auth)
-        var player = new Player(client.sessionId)
-        var filteredWeapons = weapons.filter(obj => {
-            return obj.type == WeaponType.Bow
-        })
-        var weaponToEquip = filteredWeapons[Math.floor(Math.random() * filteredWeapons.length)]
-        var weapon = new Weapon(weaponToEquip.id)
-        weapon.slot = WeaponSlot[weaponToEquip.slot]
-        weapon.type = WeaponType[weaponToEquip.type]
-        weapon.combatStyle = CombatStyle[weaponToEquip.combatStyle]
-        weapon.attackRange = weaponToEquip.attackRange
-        weapon.attackSpeed = weaponToEquip.attackSpeed
-
-        player.equipWeapon(weapon)
-        player.name = auth.name
-        var keysTeams = Object.keys(this.state.stateTeams.teams)
-        player.team = keysTeams[Math.floor(Math.random() * keysTeams.length)]
-        this.state.statePlayers.addPlayer(player)
-
+        const playerName = auth.name
         const unit = Unit.generate()
+        const keysTeams = Object.keys(this.state.stateTeams.teams)
+        const keyTeam = keysTeams[Math.floor(Math.random() * keysTeams.length)]
+        unit.team = keyTeam
+        unit.name = playerName
         this.state.stateUnits.addUnit(unit)
+
+        var player = new Player(client.sessionId)
+        player.name = auth.name
+        player.unitId = unit.id
+        this.state.statePlayers.addPlayer(player)
     }
 
     // When a client sends a message
@@ -122,11 +103,6 @@ export class Match extends Room<IStateRoot> {
     }
 
     update () {
-        systemTargetCheckPlayer(this.state.statePlayers)
-        systemRotatePlayersToTarget(this.state.statePlayers)
-        systemMovePlayers(this.state.statePlayers, this.clock.deltaTime)
-        systemAutoAttackPlayers(this.state.statePlayers, this.clock.elapsedTime, this)
-        
         systemUnitsTargetCheck(this.state.stateUnits.units)
         systemUnitsRotateToTarget(this.state.stateUnits.units)
         systemUnitsMovement(this.state.stateUnits.units, this.clock.deltaTime)

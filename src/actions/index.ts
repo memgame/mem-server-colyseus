@@ -2,16 +2,16 @@ import { IStateRoot } from "../states/StateRoot";
 import * as actionTypes from './actionTypes';
 import { Client, Room } from "colyseus";
 import { actionTest } from "./actionTest";
-import { actionMovePlayerTo } from "./actionMovePlayerTo";
+import { actionMoveUnitTo } from "./actionMoveUnitTo";
 import { actionJoinTeam } from "./actionJoinTeam";
-import { actionTargetPlayer } from "./actionTargetPlayer";
+import { actionTargetUnit } from "./actionTargetUnit";
 import { actionPing } from "./actionPing";
 
 var actions: IActionTree<IStateRoot, Client> = {
     [actionTypes.TEST]: actionTest,
-    [actionTypes.MOVE_PLAYER_TO]: actionMovePlayerTo,
+    [actionTypes.MOVE_UNIT_TO]: actionMoveUnitTo,
     [actionTypes.JOIN_TEAM]: actionJoinTeam,
-    [actionTypes.TARGET_PLAYER]: actionTargetPlayer,
+    [actionTypes.TARGET_UNIT]: actionTargetUnit,
     [actionTypes.PING]: actionPing
 }
 export default actions
