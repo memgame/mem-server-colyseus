@@ -7,7 +7,6 @@ import { IMoveable } from "../interfaces/IMoveable";
 import { ITargetable } from "../interfaces/ITargetable";
 import { IHittable } from "../interfaces/IHittable";
 import { Weapon, WeaponSlot, WeaponType, CombatStyle } from "../models/weapon";
-import { clamp } from "../utility/clamp";
 import { IHealable } from "../interfaces/IHealable";
 import weapons from '../data/weapons.json'
 
@@ -58,7 +57,7 @@ export class Unit extends BaseEntity implements IMoveable, ITargetable, IHittabl
         const finalMagicDamage = magicDamage * (100 / (100 + this.attributes.magicResistance))
 
         const totalDamage = finalPhysicalDamage + finalMagicDamage + trueDamage
-        this.health.current = clamp(this.health.current - totalDamage, 0, this.health.max)
+        this.health.remove(totalDamage)
 
         this.isAlive = this.health.current > 0 ? true : false
 
@@ -74,19 +73,19 @@ export class Unit extends BaseEntity implements IMoveable, ITargetable, IHittabl
     public heal (health: number) {
         if (!this.isAlive) return
         
-        this.health.current = clamp(this.health.current + health, 0, this.health.max)
+        this.health.add(health)
     }
 
     public addEnergy (energy: number) {
         if (!this.isAlive) return
 
-        this.energy.current = clamp(this.energy.current + energy, 0, this.energy.max)
+        this.energy.add(energy)
     }
 
     public removeEnergy (energy: number) {
         if (!this.isAlive) return
 
-        this.energy.current = clamp(this.energy.current - energy, 0, this.energy.max)
+        this.energy.remove(energy)
     }
 
     public equipWeapon (weapon: Weapon) {

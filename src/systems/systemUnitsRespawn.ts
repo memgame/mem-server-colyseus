@@ -10,7 +10,7 @@ export function systemUnitsRespawn (units: MapSchema<Unit>) {
 
         if (!unit.health) continue
         
-        unit.health.current = unit.health.max
+        unit.health.reset()
         unit.position = new Position(125, 0 , 125)
         unit.isAlive = true
     }
