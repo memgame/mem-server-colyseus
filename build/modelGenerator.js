@@ -1,17 +1,25 @@
 const exec = require('child_process').exec;
 var files = 
 [
+    //entities
+    'src/entities/baseEntity.ts',
+    'src/entities/building.ts',
+    'src/entities/unit.ts',
     //models
+    'src/models/attributes.ts',
+    'src/models/bar.ts',
     'src/models/capturePoint.ts',
     'src/models/player.ts',
     'src/models/position.ts',
     'src/models/team.ts',
+    'src/models/weapon.ts',
     //states
     'src/states/StateCapturePoints.ts',
     'src/states/StateCounter.ts',
     'src/states/StatePlayers.ts',
     'src/states/StateRoot.ts',
-    'src/states/StateTeams.ts'
+    'src/states/StateTeams.ts',
+    'src/states/StateUnits.ts'
 ]
 
 var filesString = ''

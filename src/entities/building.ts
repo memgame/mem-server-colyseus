@@ -1,4 +1,4 @@
-import { BaseEntity } from "./BaseEntitiy";
+import { BaseEntity } from "./baseEntity";
 import { type } from "@colyseus/schema";
 import { Position } from "../models/position";
 
