@@ -10,6 +10,7 @@ export class SkillProgress extends Schema {
         super();
         this.skill = aSkill
 
+        //TODO: remove
         this.level = Math.floor(Math.random() * this.skill.maxLevel);
     }
 
