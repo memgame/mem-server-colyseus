@@ -1,11 +1,13 @@
-import shortid from 'shortid';
-import { Schema, type } from "@colyseus/schema";
+import shortid from 'shortid'
+import { Schema, type } from "@colyseus/schema"
 
-export class BaseEntity extends Schema {
-  @type('string') id: string;
-  @type('string') type: SkillType;
-  @type('string') name: string;
-  @type('string') description: string;
+export class BaseSkill extends Schema {
+  @type('string') id: string
+  @type('string') type: SkillType
+  @type('string') name: string
+  @type('string') description: string
+  @type('number') maxLevel: number
+  @type('string') icon: string
   
   constructor (id?: string) {
     super();
