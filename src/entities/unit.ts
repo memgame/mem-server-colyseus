@@ -3,6 +3,7 @@ import { type } from "@colyseus/schema";
 import { Position } from "../models/position";
 import { Bar } from "../models/bar";
 import { Attributes } from "../models/attributes";
+import { SkillSet } from '../skills/skillSet'
 import { IMoveable } from "../interfaces/IMoveable";
 import { ITargetable } from "../interfaces/ITargetable";
 import { IHittable } from "../interfaces/IHittable";
@@ -23,6 +24,7 @@ export class Unit extends BaseEntity implements IMoveable, ITargetable, IHittabl
     @type(Weapon) public mainHand: Weapon
     @type(Weapon) public offHand: Weapon
     @type('string') public team: string
+    @type(SkillSet) public skillSet: SkillSet = new SkillSet()
 
     public moveTo: Position
     public target: ITargetable & IHittable

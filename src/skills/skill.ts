@@ -1,12 +1,12 @@
 import shortid from 'shortid'
 import { Schema, type } from "@colyseus/schema"
 
-export class BaseSkill extends Schema {
+export class Skill extends Schema {
   @type('string') id: string
   @type('string') type: SkillType
-  @type('string') name: string
+  @type('string') name: string = 'Test Skill'
   @type('string') description: string
-  @type('number') maxLevel: number
+  @type('number') maxLevel: number = 5
   @type('string') icon: string
   
   constructor (id?: string) {
