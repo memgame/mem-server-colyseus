@@ -4,7 +4,6 @@ import { Trigger } from './trigger/trigger';
 
 export class Skill extends Schema {
   @type('string') id: string
-  @type('string') type: SkillType
   @type('string') name: string = 'Test Skill'
   @type('string') description: string
   @type('number') maxLevel: number = 5
@@ -16,10 +15,4 @@ export class Skill extends Schema {
     super();
     this.id = id || shortid.generate()
   }
-}
-
-export enum SkillType {
-  PassiveSkill = 'PassiveSkill',
-  SkillShot = 'SkillShot',
-  TargetSkill = 'TargetSkill'
 }

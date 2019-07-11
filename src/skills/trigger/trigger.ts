@@ -1,6 +1,7 @@
 import { Effect, EffectType } from "../effect";
 import { Unit } from "../../entities/unit";
 import { CastContext } from "../castContext";
+import { Position } from "../../models/position";
 
 export abstract class Trigger extends Effect {
 
@@ -9,7 +10,7 @@ export abstract class Trigger extends Effect {
         this.type = EffectType.Trigger
     }
 
-    trigger (caster: Unit, target: Unit, level: number): boolean {
+    trigger (caster: Unit, target: Unit, location: Position, level: number): boolean {
         const castContext = new CastContext()
         castContext.caster = caster
         castContext.level = level
