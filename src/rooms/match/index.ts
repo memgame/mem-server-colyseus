@@ -6,7 +6,6 @@ import { systemCalculateCapturePoints } from '../../systems/systemCalculateCaptu
 
 import actions from '../../actions'
 import { StateRoot, IStateRoot } from '../../states/StateRoot';
-import { Player } from '../../models/player';
 import { systemLoadMap } from '../../systems/systemLoadMap';
 import { systemUnitsMovement } from '../../systems/systemUnitsMovement';
 import { systemUnitsTargetCheck } from '../../systems/systemUnitsTargetCheck';
@@ -15,7 +14,6 @@ import { systemUnitsAutoAttack } from '../../systems/systemUnitsAutoAttack';
 import { systemUnitsRespawn } from '../../systems/systemUnitsRespawn';
 import { systemUnitsHealthRegeneration } from '../../systems/systemUnitsHealthRegeneration';
 import { systemUnitsEnergyRegeneration } from '../../systems/systemUnitsEnergyRegeneration';
-import { Unit } from '../../entities/unit';
 
 export class Match extends Room<IStateRoot> {
 
@@ -61,21 +59,13 @@ export class Match extends Room<IStateRoot> {
     onJoin (client: Client, options: any, auth: any) { 
         console.log('-------------')
         console.log('on join')
-        console.log(client.id)
+        console.log(client.sessionId)
         console.log(options)
         console.log(auth)
-        const playerName = auth.name
-        const unit = Unit.generate()
-        const keysTeams = Object.keys(this.state.stateTeams.teams)
-        const keyTeam = keysTeams[Math.floor(Math.random() * keysTeams.length)]
-        unit.team = keyTeam
-        unit.name = playerName
-        this.state.stateUnits.addUnit(unit)
-
-        var player = new Player(client.sessionId)
-        player.name = auth.name
-        player.unitId = unit.id
-        this.state.statePlayers.addPlayer(player)
+        actions.addPlayer(this, this.state, null, {
+            playerName: auth.name,
+            sessionId: client.sessionId
+        })
     }
 
     // When a client sends a message
@@ -91,7 +81,9 @@ export class Match extends Room<IStateRoot> {
 
     // When a client leaves the room
     onLeave (client: Client, consented: boolean) {
-        this.state.statePlayers.removePlayer(client.sessionId)
+        actions.addPlayer(this, this.state, null, {
+            sessionId: client.sessionId
+        })
     }
 
     // Cleanup callback, called after there are no more clients in the room. (see `autoDispose`)

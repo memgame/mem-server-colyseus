@@ -1,4 +1,5 @@
 //A
+export const ADD_PLAYER: string = 'ADD_PLAYER'
 //B
 //C
 //D
@@ -19,6 +20,7 @@ export const MOVE_UNIT_TO: string = 'MOVE_UNIT_TO'
 export const PING: string = 'PING'
 //Q
 //R
+export const REMOVE_PLAYER: string = 'REMOVE_PLAYER'
 //S
 //T
 export const TARGET_UNIT: string = 'TARGET_UNIT'

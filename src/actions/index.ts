@@ -6,13 +6,18 @@ import { actionMoveUnitTo } from "./actionMoveUnitTo";
 import { actionJoinTeam } from "./actionJoinTeam";
 import { actionTargetUnit } from "./actionTargetUnit";
 import { actionPing } from "./actionPing";
+import { actionAddPlayer } from "./actionAddPlayer"
+import { actionRemovePlayer } from "./actionRemovePlayer";
 
 var actions: IActionTree<IStateRoot, Client> = {
     [actionTypes.TEST]: actionTest,
     [actionTypes.MOVE_UNIT_TO]: actionMoveUnitTo,
     [actionTypes.JOIN_TEAM]: actionJoinTeam,
     [actionTypes.TARGET_UNIT]: actionTargetUnit,
-    [actionTypes.PING]: actionPing
+    [actionTypes.PING]: actionPing,
+    [actionTypes.ADD_PLAYER]: actionAddPlayer,
+    [actionTypes.REMOVE_PLAYER]: actionRemovePlayer,
+
 }
 export default actions
 
