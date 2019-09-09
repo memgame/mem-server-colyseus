@@ -6,5 +6,5 @@ export const actionRemovePlayer: Action<IStateRoot, Client> = (room, state, clie
     //TODO make better server validation
     if (client != null) return
 
-    this.state.statePlayers.removePlayer(payload.sessionId)
+    state.statePlayers.removePlayer(payload.sessionId)
 }

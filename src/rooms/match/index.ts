@@ -5,6 +5,7 @@ import { systemCalculateTeamPoints } from '../../systems/systemCalculateTeamPoin
 import { systemCalculateCapturePoints } from '../../systems/systemCalculateCapturePoints'
 
 import actions from '../../actions'
+import * as actionTypes from '../../actions/actionTypes';
 import { StateRoot, IStateRoot } from '../../states/StateRoot';
 import { systemLoadMap } from '../../systems/systemLoadMap';
 import { systemUnitsMovement } from '../../systems/systemUnitsMovement';
@@ -62,7 +63,7 @@ export class Match extends Room<IStateRoot> {
         console.log(client.sessionId)
         console.log(options)
         console.log(auth)
-        actions.addPlayer(this, this.state, null, {
+        actions[actionTypes.ADD_PLAYER](this, this.state, null, {
             playerName: auth.name,
             sessionId: client.sessionId
         })
@@ -81,7 +82,7 @@ export class Match extends Room<IStateRoot> {
 
     // When a client leaves the room
     onLeave (client: Client, consented: boolean) {
-        actions.addPlayer(this, this.state, null, {
+        actions[actionTypes.REMOVE_PLAYER](this, this.state, null, {
             sessionId: client.sessionId
         })
     }
