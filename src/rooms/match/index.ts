@@ -23,8 +23,8 @@ export class Match extends Room<IStateRoot> {
         this.setState(new StateRoot());
     }
 
-    // When room is initialized
-    onInit (options: any) {
+    // When room is created
+    onCreate (options: any) {
         //this.setState(new State(map))
         systemLoadMap(this.state, map)
         this.setPatchRate(1000 / 30);
@@ -47,7 +47,7 @@ export class Match extends Room<IStateRoot> {
     }
 
     // Authorize client based on provided options before WebSocket handshake is complete
-    async onAuth (options: any) {
+    async onAuth (client: Client, options: any) {
         console.log('-------------')
         console.log('on auth')
         console.log(options)

@@ -12,6 +12,7 @@ const port = Number(process.env.PORT || 8080);
 const app = express();
 
 app.use(cors());
+app.use(express.json());
 
 // Create HTTP Server
 const httpServer = createServer(app);
@@ -19,6 +20,7 @@ const httpServer = createServer(app);
 // Attach WebSocket Server on HTTP Server.
 const gameServer = new Server({
     server: httpServer,
+    express: app,
     verifyClient: (info, next) => {
         // validate 'info'
         //
@@ -29,7 +31,7 @@ const gameServer = new Server({
 });
 
 // Register Rooms
-gameServer.register("match", Match);
+gameServer.define("match", Match);
 
 // TODO make this configurable for prod
 app.use(health.ping())
