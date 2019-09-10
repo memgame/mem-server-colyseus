@@ -1,4 +1,5 @@
 {
+    "id": "wordOfHealing",
     "name": "Word Of Healing",
     "description": "Elite Spell. Heals for 62...81...100. Heals for 81...98...115 more with a chance of 50%.",
     "maxLevel": 3,
