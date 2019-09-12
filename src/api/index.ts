@@ -1,4 +1,4 @@
-import skills, { ISkills } from './skills'
+import skills, { IApiSkills } from './apiSkills'
 
 const api: IApi = {
     skills
@@ -7,5 +7,5 @@ const api: IApi = {
 export default api
 
 export interface IApi {
-    skills: ISkills
+    skills: IApiSkills
 }

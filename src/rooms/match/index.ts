@@ -15,6 +15,7 @@ import { systemUnitsAutoAttack } from '../../systems/systemUnitsAutoAttack';
 import { systemUnitsRespawn } from '../../systems/systemUnitsRespawn';
 import { systemUnitsHealthRegeneration } from '../../systems/systemUnitsHealthRegeneration';
 import { systemUnitsEnergyRegeneration } from '../../systems/systemUnitsEnergyRegeneration';
+import api from '../../api'
 
 export class Match extends Room<IStateRoot> {
 
@@ -67,6 +68,7 @@ export class Match extends Room<IStateRoot> {
             playerName: auth.name,
             sessionId: client.sessionId
         })
+        console.log(api.skills.getSkills())
     }
 
     // When a client sends a message
