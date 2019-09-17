@@ -5,10 +5,15 @@
     "maxLevel": 3,
     "icon": "wordOfHealing",
     "costs": {
-        "energy": 5,
-        "health": 0
+        "energyBase": 5,
+        "energyScale": 1,
+        "healthBase": 0,
+        "healthScale": 0
     },
-    "cooldown": 3,
+    "cooldownBase": 5,
+    "cooldownScale": -1,
+    "pointsSpentReqBase": 5,
+    "pointsSpentReqScale": 5,
     "effects": [
         {
             "type": "trigger",
