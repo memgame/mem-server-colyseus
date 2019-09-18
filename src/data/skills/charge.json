@@ -1,0 +1,48 @@
+{
+    "id": "charge",
+    "name": "Charge!",
+    "description": "Elite Spell. Allies in earshot move for 5...11...13 seconds 30...32...34% faster.",
+    "maxLevel": 3,
+    "icon": "charge",
+    "costs": {
+        "energyBase": 5,
+        "energyScale": 1,
+        "healthBase": 0,
+        "healthScale": 0
+    },
+    "cooldownBase": 20,
+    "cooldownScale": 2,
+    "pointsSpentReqBase": 5,
+    "pointsSpentReqScale": 5,
+    "effects": [
+        {
+            "type": "trigger",
+            "data": {
+                "type": "cast"
+            },
+            "children": [
+                {
+                    "type": "target",
+                    "data": {
+                        "type": "area",
+                        "group": "ally",
+                        "includeCaster": true,
+                        "range": 5
+                    },
+                    "children": [
+                        {
+                            "type": "mechanic",
+                            "data": {
+                                "type": "speed",
+                                "multiplierBase": 1.3,
+                                "multiplierScale": 0.02,
+                                "durationBase": 5,
+                                "durationScale": 4
+                            }
+                        }
+                    ]
+                }
+            ] 
+        }
+    ]
+}

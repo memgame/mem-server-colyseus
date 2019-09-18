@@ -24,7 +24,10 @@
                 {
                     "type": "target",
                     "data": {
-                        "type": "single"
+                        "type": "single",
+                        "group": "ally",
+                        "includeCaster": true,
+                        "range": 10
                     },
                     "children": [
                         {
