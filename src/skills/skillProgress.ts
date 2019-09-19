@@ -1,5 +1,4 @@
 import { Schema, type } from "@colyseus/schema";
-import { Skill } from "./skill";
 
 export class SkillProgress extends Schema {
     @type('number') public level: number
