@@ -21,11 +21,20 @@ export const actionAddPlayer: Action<IStateRoot, Client> = (room, state, client,
     const skills = api.skills.getSkills()
     const skillsKeys = Object.keys(skills)
 
-    unit.skillSet.passiveSkill = new SkillProgress(new Skill(skillsKeys[Math.floor(Math.random() * skillsKeys.length)]))
-    unit.skillSet.slot1 = new SkillProgress(new Skill(skillsKeys[Math.floor(Math.random() * skillsKeys.length)]))
-    unit.skillSet.slot2 = new SkillProgress(new Skill(skillsKeys[Math.floor(Math.random() * skillsKeys.length)]))
-    unit.skillSet.slot3 = new SkillProgress(new Skill(skillsKeys[Math.floor(Math.random() * skillsKeys.length)]))
-    unit.skillSet.ultimateSkill = new SkillProgress(new Skill(skillsKeys[Math.floor(Math.random() * skillsKeys.length)]))
+    const skill1 = new Skill(skillsKeys[Math.floor(Math.random() * skillsKeys.length)])
+    unit.skillSet.passiveSkill = new SkillProgress(0, skill1.maxLevel, skill1.id, 0)
+
+    const skill2 = new Skill(skillsKeys[Math.floor(Math.random() * skillsKeys.length)])
+    unit.skillSet.slot1 = new SkillProgress(0, skill2.maxLevel, skill2.id, 0)
+
+    const skill3 = new Skill(skillsKeys[Math.floor(Math.random() * skillsKeys.length)])
+    unit.skillSet.slot2 = new SkillProgress(0, skill3.maxLevel, skill3.id, 0)
+
+    const skill4 = new Skill(skillsKeys[Math.floor(Math.random() * skillsKeys.length)])
+    unit.skillSet.slot3 = new SkillProgress(0, skill4.maxLevel, skill4.id, 0)
+
+    const skill5 = new Skill(skillsKeys[Math.floor(Math.random() * skillsKeys.length)])
+    unit.skillSet.ultimateSkill = new SkillProgress(0, skill5.maxLevel, skill5.id, 0)
 
     state.stateUnits.addUnit(unit)
 

@@ -2,21 +2,22 @@ import { Schema, type } from "@colyseus/schema";
 import { Skill } from "./skill";
 
 export class SkillProgress extends Schema {
-    @type('number') public cooldown: number = 0
-    @type('number') public level: number = 0
-    @type(Skill) public skill: Skill
+    @type('number') public level: number
+    @type('number') public maxLevel: number
+    @type('string') public skillId: string
+    @type('number') public cooldown: number
 
-    constructor (aSkill: Skill) {
+    constructor (level: number, maxLevel: number, skillId: string, cooldown: number) {
         super();
-        this.skill = aSkill
-
-        //TODO: remove
-        this.level = Math.floor(Math.random() * (this.skill.maxLevel + 1));
+        this.level = level
+        this.maxLevel = maxLevel
+        this.skillId = skillId
+        this.cooldown = cooldown
     }
 
     levelUp (value: number): boolean {
         const newLevel = this.level + value
-        if(this.skill.maxLevel < newLevel) {
+        if(this.maxLevel < newLevel) {
             return false
         }
         this.level = newLevel
