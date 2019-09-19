@@ -1,6 +1,6 @@
-import shortid from 'shortid'
 import { Schema, type } from "@colyseus/schema"
 import { Trigger } from './trigger/trigger';
+import api from '../api'
 
 export class Skill extends Schema {
   @type('string') id: string
@@ -11,8 +11,13 @@ export class Skill extends Schema {
 
   private triggers: Array<Trigger> = []
   
-  constructor (id?: string) {
+  constructor (id: string) {
     super();
-    this.id = id || shortid.generate()
+    this.id = id
+    const skill = api.skills.getSkillById(id);
+    this.name = skill.name
+    this.description = skill.description
+    this.maxLevel = skill.maxLevel
+    this.icon = skill.icon
   }
 }

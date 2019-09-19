@@ -11,7 +11,7 @@ export class SkillProgress extends Schema {
         this.skill = aSkill
 
         //TODO: remove
-        this.level = Math.floor(Math.random() * this.skill.maxLevel);
+        this.level = Math.floor(Math.random() * (this.skill.maxLevel + 1));
     }
 
     levelUp (value: number): boolean {

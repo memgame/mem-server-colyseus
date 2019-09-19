@@ -10,7 +10,7 @@ const skills: IApiSkills = {
     getSkills: (): IStringSkillMap => {
         return allSkills
     },
-    getSkillById: (id: string): object => {
+    getSkillById: (id: string): any => {
         return allSkills[id]
     }
 }
@@ -18,7 +18,7 @@ export default skills
 
 export interface IApiSkills {
     getSkills (): IStringSkillMap,
-    getSkillById (id: string): object
+    getSkillById (id: string): any
 }
 
-export interface IStringSkillMap { [key: string]: object; };
+export interface IStringSkillMap { [key: string]: any; };
