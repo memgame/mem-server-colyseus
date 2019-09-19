@@ -68,7 +68,10 @@ export class Match extends Room<IStateRoot> {
             playerName: auth.name,
             sessionId: client.sessionId
         })
-        console.log(api.skills.getSkills())
+        const skills = api.skills.getSkills()
+        console.log(skills)
+        const skill = api.skills.getSkillById(Object.keys(skills)[0])
+        console.log(skill)
     }
 
     // When a client sends a message
