@@ -2,6 +2,7 @@
 export const ADD_PLAYER: string = 'ADD_PLAYER'
 //B
 //C
+export const CAST_SKILL: string = 'CAST_SKILL'
 //D
 //E
 //F

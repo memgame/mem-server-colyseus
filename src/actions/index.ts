@@ -8,6 +8,7 @@ import { actionTargetUnit } from "./actionTargetUnit";
 import { actionPing } from "./actionPing";
 import { actionAddPlayer } from "./actionAddPlayer"
 import { actionRemovePlayer } from "./actionRemovePlayer";
+import { actionCastSkill } from './actionCastSkill'
 
 var actions: IActionTree<IStateRoot, Client> = {
     [actionTypes.TEST]: actionTest,
@@ -17,6 +18,7 @@ var actions: IActionTree<IStateRoot, Client> = {
     [actionTypes.PING]: actionPing,
     [actionTypes.ADD_PLAYER]: actionAddPlayer,
     [actionTypes.REMOVE_PLAYER]: actionRemovePlayer,
+    [actionTypes.CAST_SKILL]: actionCastSkill
 
 }
 export default actions

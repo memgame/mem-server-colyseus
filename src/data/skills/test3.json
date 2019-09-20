@@ -1,0 +1,28 @@
+{
+    "id": "test3",
+    "name": "Test3",
+    "description": "Normal Skill. Test 3",
+    "maxLevel": 5,
+    "icon": "test3",
+    "costs": {
+        "energyBase": 0,
+        "energyScale": 0,
+        "healthBase": 2,
+        "healthScale": 3
+    },
+    "cooldownBase": 10,
+    "cooldownScale": -2,
+    "pointsSpentReqBase": 0,
+    "pointsSpentReqScale": 2,
+    "effects": [
+        {
+            "type": "trigger",
+            "data": {
+                "type": "cast"
+            },
+            "children": [
+                
+            ] 
+        }
+    ]
+}

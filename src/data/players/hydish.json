@@ -1,0 +1,21 @@
+{
+    "id": "2",
+    "name": "Hydish",
+    "skillSet": {
+        "passiveSkill": {
+          "skillId": "wordOfHealing"
+        },
+        "slot1": {
+          "skillId": "charge"
+        },
+        "slot2": {
+          "skillId": "wordOfHealing"
+        },
+        "slot3": {
+          "skillId": "charge"
+        },
+        "ultimateSkill": {
+          "skillId": "charge"
+        }
+    }
+}

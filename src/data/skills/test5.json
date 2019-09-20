@@ -1,0 +1,28 @@
+{
+    "id": "test5",
+    "name": "Test5",
+    "description": "Elite Skill. Test 5",
+    "maxLevel": 3,
+    "icon": "test5",
+    "costs": {
+        "energyBase": 5,
+        "energyScale": 0,
+        "healthBase": 3,
+        "healthScale": 1
+    },
+    "cooldownBase": 10,
+    "cooldownScale": -2,
+    "pointsSpentReqBase": 5,
+    "pointsSpentReqScale": 5,
+    "effects": [
+        {
+            "type": "trigger",
+            "data": {
+                "type": "cast"
+            },
+            "children": [
+                
+            ] 
+        }
+    ]
+}

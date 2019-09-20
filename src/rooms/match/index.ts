@@ -53,7 +53,10 @@ export class Match extends Room<IStateRoot> {
         console.log('-------------')
         console.log('on auth')
         console.log(options)
-        const userData = { name: 'SomeUserName'}
+        const players = api.players.getPlayers()
+        const playersKeys = Object.keys(players)
+        const player = api.players.getPlayersById(playersKeys[Math.floor(Math.random() * playersKeys.length)])
+        const userData = player
         return userData ? userData : false;
     }
 
@@ -65,13 +68,9 @@ export class Match extends Room<IStateRoot> {
         console.log(options)
         console.log(auth)
         actions[actionTypes.ADD_PLAYER](this, this.state, null, {
-            playerName: auth.name,
+            auth,
             sessionId: client.sessionId
         })
-        const skills = api.skills.getSkills()
-        console.log(skills)
-        const skill = api.skills.getSkillById(Object.keys(skills)[0])
-        console.log(skill)
     }
 
     // When a client sends a message

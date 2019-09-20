@@ -1,0 +1,28 @@
+{
+    "id": "test1",
+    "name": "Test1",
+    "description": "Passive Skill. Test 1",
+    "maxLevel": 1,
+    "icon": "test1",
+    "costs": {
+        "energyBase": 0,
+        "energyScale": 0,
+        "healthBase": 0,
+        "healthScale": 0
+    },
+    "cooldownBase": 0,
+    "cooldownScale": 0,
+    "pointsSpentReqBase": 0,
+    "pointsSpentReqScale": 0,
+    "effects": [
+        {
+            "type": "trigger",
+            "data": {
+                "type": "cast"
+            },
+            "children": [
+
+            ] 
+        }
+    ]
+}

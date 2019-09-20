@@ -1,0 +1,21 @@
+{
+    "id": "1",
+    "name": "Wenish",
+    "skillSet": {
+        "passiveSkill": {
+          "skillId": "test1"
+        },
+        "slot1": {
+          "skillId": "test2"
+        },
+        "slot2": {
+          "skillId": "test3"
+        },
+        "slot3": {
+          "skillId": "test4"
+        },
+        "ultimateSkill": {
+          "skillId": "test5"
+        }
+    }
+}
