@@ -3,19 +3,19 @@
     "name": "Hydish",
     "skillSet": {
         "passiveSkill": {
-          "skillId": "wordOfHealing"
+          "skillId": "test1"
         },
         "slot1": {
-          "skillId": "charge"
+          "skillId": "test2"
         },
         "slot2": {
-          "skillId": "wordOfHealing"
+          "skillId": "test3"
         },
         "slot3": {
           "skillId": "charge"
         },
         "ultimateSkill": {
-          "skillId": "charge"
+          "skillId": "wordOfHealing"
         }
     }
 }

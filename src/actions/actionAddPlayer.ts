@@ -18,19 +18,19 @@ export const actionAddPlayer: Action<IStateRoot, Client> = (room, state, client,
     unit.name = playerName
 
     const skill1 = new Skill(payload.auth.skillSet.passiveSkill.skillId)
-    unit.skillSet.passiveSkill = new SkillProgress(0, skill1.maxLevel, skill1.id, 0)
+    unit.skillSet.passiveSkill = new SkillProgress(0, skill1.maxLevel, skill1.id)
 
     const skill2 = new Skill(payload.auth.skillSet.slot1.skillId)
-    unit.skillSet.slot1 = new SkillProgress(0, skill2.maxLevel, skill2.id, 0)
+    unit.skillSet.slot1 = new SkillProgress(0, skill2.maxLevel, skill2.id)
 
     const skill3 = new Skill(payload.auth.skillSet.slot2.skillId)
-    unit.skillSet.slot2 = new SkillProgress(0, skill3.maxLevel, skill3.id, 0)
+    unit.skillSet.slot2 = new SkillProgress(0, skill3.maxLevel, skill3.id)
 
     const skill4 = new Skill(payload.auth.skillSet.slot3.skillId)
-    unit.skillSet.slot3 = new SkillProgress(0, skill4.maxLevel, skill4.id, 0)
+    unit.skillSet.slot3 = new SkillProgress(0, skill4.maxLevel, skill4.id)
 
     const skill5 = new Skill(payload.auth.skillSet.ultimateSkill.skillId)
-    unit.skillSet.ultimateSkill = new SkillProgress(0, skill5.maxLevel, skill5.id, 0)
+    unit.skillSet.ultimateSkill = new SkillProgress(0, skill5.maxLevel, skill5.id)
 
     state.stateUnits.addUnit(unit)
 
