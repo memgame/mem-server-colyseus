@@ -1,5 +1,6 @@
 import { Schema, type } from "@colyseus/schema";
 import { Unit } from "../entities/unit";
+import { Skill } from "./skill";
 
 export class SkillProgress extends Schema {
     @type('number') public level: number
@@ -24,9 +25,16 @@ export class SkillProgress extends Schema {
         return true
     }
 
-    cast (caster: Unit): boolean {
-        console.log(`skill: ${this.skillId} casted from ${caster.name}`)
-        //TODO implement skill execute
-        return true;
+    cast (caster: Unit, elapsedTime: number): boolean {
+        const skill = new Skill(this.skillId)
+        const canSkillBeCasted = Skill.canSkillBeCasted(skill, caster, this.level, this.lastCastTime, elapsedTime)
+        if (canSkillBeCasted) {
+            console.log(`skill: ${this.skillId} casted from ${caster.name}`)
+            //TODO implement skill execute
+            this.lastCastTime = elapsedTime
+        } else {
+            console.log(`skill: ${this.skillId} cant be casted from ${caster.name}`)
+        }
+        return canSkillBeCasted;
     }
 }

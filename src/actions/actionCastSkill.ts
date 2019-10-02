@@ -28,7 +28,7 @@ export const actionCastSkill: Action<IStateRoot, Client> = (room, {statePlayers,
         const skill: SkillProgress = unit.skillSet[payload.skillSlot]
         if(!skill) throw 'could not find skill slot'
 
-        skill.cast(unit)
+        skill.cast(unit, room.clock.elapsedTime)
 
 
     } catch (err) {
