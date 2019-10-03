@@ -1,9 +1,9 @@
-import { Schema, type } from "@colyseus/schema"
 import { Trigger } from './trigger/trigger';
+import { Costs } from './costs'
 import api from '../api'
 import { Unit } from "../entities/unit";
 
-export class Skill extends Schema {
+export class Skill {
   public id: string
   public name: string = 'Test Skill'
   public description: string
@@ -13,10 +13,14 @@ export class Skill extends Schema {
   public cooldownBase: number
   public cooldownScale: number
 
+  public pointsSpentReqBase: number
+  public pointsSpentReqScale: number
+
+  public costs: Costs = new Costs()
+
   private triggers: Array<Trigger> = []
   
   constructor (id: string) {
-    super();
     this.id = id
     const data = api.skills.getSkillById(id);
     this.name = data.name
@@ -25,6 +29,15 @@ export class Skill extends Schema {
     this.icon = data.icon
     this.cooldownBase = data.cooldownBase
     this.cooldownScale = data.cooldownScale
+
+    this.costs.energyBase = data.costs.energyBase
+    this.costs.energyScale = data.costs.energyScale
+    this.costs.healthBase = data.costs.healthBase
+    this.costs.healthScale = data.costs.healthScale
+
+    this.pointsSpentReqBase = data.pointsSpentReqBase
+    this.pointsSpentReqScale = data.pointsSpentReqScale
+    console.log(this)
   }
 
   static canSkillBeCasted(skill: Skill, caster: Unit, level: number, lastCastTime: number, elapsedTime: number): boolean {
