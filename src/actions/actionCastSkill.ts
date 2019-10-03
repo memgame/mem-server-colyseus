@@ -10,7 +10,7 @@ import { SkillProgress } from "../skills/skillProgress";
 {
     "ACTION_TYPE": "CAST_SKILL",
     "payload": {
-        "skillSlot": "SKILL_SLOT"
+        "skillSlot": "slot1"
     }
 }
 */
