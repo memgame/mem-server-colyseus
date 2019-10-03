@@ -29,8 +29,6 @@ export const actionCastSkill: Action<IStateRoot, Client> = (room, {statePlayers,
         if(!skill) throw 'could not find skill slot'
 
         skill.cast(unit, room.clock.elapsedTime)
-
-
     } catch (err) {
         console.error('Error', CAST_SKILL, err)
     }
