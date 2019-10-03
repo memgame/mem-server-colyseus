@@ -13,7 +13,7 @@ import { Unit } from "../entities/unit";
     }
 }
 */
-export const actionMoveUnitTo: Action<IStateRoot, Client> =  (room, { statePlayers, stateUnits }, { sessionId }, payload) => {
+export const actionMoveUnitTo: Action<IStateRoot, Client> = (room, { statePlayers, stateUnits }, { sessionId }, payload) => {
     //TODO check payload
     if(!payload) throw 'payload is not defined'
     if(!payload.x) throw 'payload.x is not defined'
