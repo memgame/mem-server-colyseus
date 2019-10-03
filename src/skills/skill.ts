@@ -13,20 +13,18 @@ export class Skill extends Schema {
   public cooldownBase: number
   public cooldownScale: number
 
-  private data: any
-
   private triggers: Array<Trigger> = []
   
   constructor (id: string) {
     super();
     this.id = id
-    this.data = api.skills.getSkillById(id);
-    this.name = this.data.name
-    this.description = this.data.description
-    this.maxLevel = this.data.maxLevel
-    this.icon = this.data.icon
-    this.cooldownBase = this.data.cooldownBase
-    this.cooldownScale = this.data.cooldownScale
+    const data = api.skills.getSkillById(id);
+    this.name = data.name
+    this.description = data.description
+    this.maxLevel = data.maxLevel
+    this.icon = data.icon
+    this.cooldownBase = data.cooldownBase
+    this.cooldownScale = data.cooldownScale
   }
 
   static canSkillBeCasted(skill: Skill, caster: Unit, level: number, lastCastTime: number, elapsedTime: number): boolean {
