@@ -1,7 +1,9 @@
-import { Trigger } from './trigger/trigger';
+import { Trigger, TriggerType } from './trigger/trigger';
 import { Costs } from './costs'
 import api from '../api'
 import { Unit } from "../entities/unit";
+import { EffectType } from './effect';
+import { TriggerCast } from './trigger/triggerCast';
 
 export class Skill {
   public id: string
@@ -37,6 +39,23 @@ export class Skill {
 
     this.pointsSpentReqBase = data.pointsSpentReqBase
     this.pointsSpentReqScale = data.pointsSpentReqScale
+    data.effects.forEach(effect => {
+      //TODO validation
+      const effectType = effect.type
+      if (effectType == EffectType.Trigger) {
+        const triggerType = effect.data.type
+        switch (triggerType) {
+          case TriggerType.Cast:
+            const trigger = new TriggerCast()
+            this.triggers.push(trigger)
+            break;
+
+          default:
+            //dosnt match a trigger type
+            break;
+        }
+      }
+    });
     console.log(this)
   }
 

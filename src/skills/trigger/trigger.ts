@@ -5,9 +5,11 @@ import { Position } from "../../models/position";
 
 export abstract class Trigger extends Effect {
 
+    public triggerType: TriggerType
+
     constructor () {
         super()
-        this.type = EffectType.Trigger
+        this.effectType = EffectType.Trigger
     }
 
     trigger (caster: Unit, target: Unit, location: Position, level: number): boolean {
@@ -44,4 +46,8 @@ export abstract class Trigger extends Effect {
         }
     }
     */
+}
+
+export enum TriggerType {
+    Cast = 'cast'
 }

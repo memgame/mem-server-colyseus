@@ -9,7 +9,7 @@ export abstract class Condition extends Effect {
 
     constructor () {
         super()
-        this.type = EffectType.Condition
+        this.effectType = EffectType.Condition
     }
 
 }

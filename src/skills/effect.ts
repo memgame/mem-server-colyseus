@@ -3,7 +3,7 @@ import { Unit } from "../entities/unit";
 
 export abstract class Effect {
     public id: string
-    public type: EffectType
+    public effectType: EffectType
 
     private children: Array<Effect>
 
@@ -31,8 +31,8 @@ export abstract class Effect {
 }
 
 export enum EffectType {
-    Condition = 'Condition',
-    Mechanic = 'Mechanic',
-    Target = 'Target',
-    Trigger = 'Trigger'
+    Condition = 'condition',
+    Mechanic = 'mechanic',
+    Target = 'target',
+    Trigger = 'trigger'
 }
