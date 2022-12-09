@@ -27,7 +27,7 @@
   "dependencies": {
     "bignumber.js": "^8.0.2",
     "colyseus": "^0.9.33",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "express-ping": "^1.4.0",
     "fuse-box": "^3.7.1",
     "nodemon": "^1.18.10",
