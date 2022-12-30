@@ -26,7 +26,7 @@
   "homepage": "https://github.com/memgame/mem-server-colyseus#readme",
   "dependencies": {
     "bignumber.js": "^8.0.2",
-    "colyseus": "^0.9.33",
+    "colyseus": "^0.14.24",
     "express": "^4.16.4",
     "express-ping": "^1.4.0",
     "fuse-box": "^3.7.1",
